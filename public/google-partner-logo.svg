@@ -1,0 +1,48 @@
+<svg width="160" height="36" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with subtle gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <rect width="160" height="36" rx="18" fill="url(#bgGradient)" stroke="#e2e8f0" stroke-width="1" filter="url(#shadow)"/>
+  
+  <!-- Google Logo -->
+  <g transform="translate(10, 8)">
+    <!-- G -->
+    <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10c2.7 0 5.15-1.08 6.95-2.83l-2.83-2.83C12.85 15.52 11.5 16 10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L16 4c-1.83-1.83-4.35-3-7-3z" fill="#4285f4"/>
+    <path d="M20 10v-2h-6v4h4.43c-.6 1.77-2.26 3-4.43 3-2.76 0-5-2.24-5-5s2.24-5 5-5c1.35 0 2.57.55 3.47 1.43l1.42-1.42C17.1 3.22 15.14 2 13 2 7.48 2 3 6.48 3 12s4.48 10 10 10 10-4.48 10-10z" fill="#4285f4"/>
+  </g>
+  
+  <!-- Arabic Text -->
+  <g>
+    <text x="45" y="16" font-family="Tahoma, Arial, sans-serif" font-size="11" font-weight="700" fill="#202124" text-anchor="start">شريك</text>
+    <text x="45" y="28" font-family="Tahoma, Arial, sans-serif" font-size="11" font-weight="700" fill="#202124" text-anchor="start">جوجل</text>
+  </g>
+  
+  <!-- English Text -->
+  <g>
+    <text x="85" y="14" font-family="Google Sans, Roboto, Arial, sans-serif" font-size="8" font-weight="500" fill="#5f6368" text-anchor="start">Google</text>
+    <text x="85" y="24" font-family="Google Sans, Roboto, Arial, sans-serif" font-size="8" font-weight="500" fill="#5f6368" text-anchor="start">Partner</text>
+  </g>
+  
+  <!-- Verified Badge -->
+  <g transform="translate(125, 10)">
+    <circle cx="8" cy="8" r="7" fill="#34a853"/>
+    <circle cx="8" cy="8" r="6" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+    <path d="M5 8l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Google Colors Accent -->
+  <g transform="translate(115, 6)">
+    <circle cx="2" cy="2" r="1" fill="#ea4335"/>
+    <circle cx="2" cy="6" r="1" fill="#fbbc04"/>
+    <circle cx="2" cy="10" r="1" fill="#4285f4"/>
+    <circle cx="2" cy="14" r="1" fill="#34a853"/>
+  </g>
+</svg>
