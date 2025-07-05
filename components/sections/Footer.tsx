@@ -173,20 +173,42 @@ export function Footer() {
           </div>
         </AnimatedContainer>
         
+        {/* Saudi Trade Registry Section */}
+        <AnimatedContainer animation="fade-in-up" delay={250}>
+          <div className="border-t border-gray-700 pt-8 mb-8">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold mb-6 text-blue-400">الشهادات والتراخيص</h3>
+              <div className="inline-flex items-center gap-4 px-6 py-3 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-500/30 backdrop-blur-sm hover:from-blue-800/30 hover:to-purple-800/30 transition-all duration-300">
+                <Image
+                  src="/trade.png"
+                  alt="سجل التجارة السعودي"
+                  width={50}
+                  height={50}
+                  className="object-contain"
+                />
+                <div className="text-right">
+                  <p className="text-sm font-medium text-white">سجل التجارة السعودي</p>
+                  <p className="text-xs text-gray-300">مرخص من وزارة التجارة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </AnimatedContainer>
+        
         {/* Payment Methods Section */}
         <AnimatedContainer animation="fade-in-up" delay={300}>
           <div className="border-t border-gray-700 pt-8 mb-8">
             <h3 className="text-lg font-semibold mb-6 text-center text-blue-400">طرق الدفع المتاحة</h3>
-            <div className="flex flex-wrap justify-center items-center gap-4">
+            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3">
               {paymentMethods.map((method, index) => (
                 <InteractiveCard key={index} variant="lift" intensity="medium">
-                  <div className="bg-white p-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  <div className="bg-white p-1 sm:p-2 rounded shadow-md hover:shadow-lg transition-all duration-300 group w-12 h-8 sm:w-16 sm:h-10 flex items-center justify-center">
                     <Image
                       src={method.image}
                       alt={method.name}
-                      width={60}
-                      height={40}
-                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                      width={32}
+                      height={22}
+                      className="object-contain group-hover:scale-105 transition-transform duration-300 w-8 h-5 sm:w-12 sm:h-7"
                     />
                   </div>
                 </InteractiveCard>
@@ -197,12 +219,11 @@ export function Footer() {
         
         <div className="border-t border-gray-700 pt-8 mt-8">
           <AnimatedContainer animation="fade-in-up" delay={400}>
-            <div className="flex flex-row justify-between items-center gap-6 text-gray-400">
-              <div className="text-center md:text-right">
+            <div className="flex flex-row justify-center items-center gap-6 text-gray-400">
+              <div className="text-center">
                 <p className="text-lg font-medium">&copy; {new Date().getFullYear()} صدارة. جميع الحقوق محفوظة.</p>
                 <p className="text-sm mt-1">شركة رائدة في مجال تحسين محركات البحث والتسويق الرقمي</p>
               </div>
-
             </div>
           </AnimatedContainer>
         </div>

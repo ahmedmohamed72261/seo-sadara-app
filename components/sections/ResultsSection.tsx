@@ -32,7 +32,7 @@ export function ResultsSection() {
       
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
         <AnimatedContainer animation="fade-in-up" className="text-center mb-12 md:mb-16">
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-5 md:space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium shadow-lg border border-green-200">
               <TrendingUp className="w-4 h-4 mr-2" />
               النتائج تتحدث
@@ -41,7 +41,7 @@ export function ResultsSection() {
               <GradientText variant="success">نمو حقيقي</GradientText>{" "}
               <span className="block mt-3 md:mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">يمكنك رؤيته</span>
             </h2>
-            <p className="max-w-4xl text-lg md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
+            <p className="max-w-4xl text-lg  md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
               نحن نؤمن بالشفافية. شاهد بنفسك كيف نحول الاستثمار في الـ SEO إلى زيادة في الظهور والنقرات.
             </p>
           </div>
