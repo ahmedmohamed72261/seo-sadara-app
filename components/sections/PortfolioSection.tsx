@@ -7,58 +7,40 @@ import { Users } from "lucide-react"
 
 const portfolioItems = [
   {
-    img: "/portfolio-real-estate.png",
+    img: "/search engine1.jpg",
     category: "عقارات",
     categoryColor: "bg-purple-100 text-purple-800 border-purple-200",
     title: "شركة تطوير عقاري",
-    description: "تصدر نتائج البحث لكلمة \"شقق للبيع في الرياض\".",
-    growth: "+150%",
+    description: "تصدر نتائج البحث لكلمة \"شقق للبيع في الرياض\" مع نمو استثنائي في الزيارات العضوية.",
+    growth: "+285%",
     metric: "زيادة في الاستفسارات"
   },
   {
-    img: "/portfolio-abayas.png",
+    img: "/search engine2.jpg",
     category: "أزياء",
     categoryColor: "bg-pink-100 text-pink-800 border-pink-200",
     title: "متجر عبايات فاخرة",
-    description: "زيادة المبيعات عبر الإنترنت بنسبة 85%.",
-    growth: "+85%",
-    metric: "زيادة في المبي��ات"
-  },
-  {
-    img: "/portfolio-clinic.png",
-    category: "خدمات طبية",
-    categoryColor: "bg-red-100 text-red-800 border-red-200",
-    title: "عيادة تجميل",
-    description: "زيادة حجوزات الاستشارات عبر الموقع بنسبة 120%.",
-    growth: "+120%",
-    metric: "زيادة في الحجوزات"
-  },
-  {
-    img: "/portfolio-dates.png",
-    category: "تجارة إلكترونية",
-    categoryColor: "bg-green-100 text-green-800 border-green-200",
-    title: "متجر إلكتروني للتمور",
-    description: "زيادة المبيعات بنسبة 70% عبر البحث العضوي.",
-    growth: "+70%",
+    description: "زيادة المبيعات عبر الإنترنت مع تحسين ترتيب محركات البحث للكلمات المفتاحية الرئيسية.",
+    growth: "+340%",
     metric: "زيادة في المبيعات"
   },
   {
-    img: "/portfolio-clothing.png",
-    category: "ملابس",
-    categoryColor: "bg-gray-100 text-gray-800 border-gray-200",
-    title: "متجر أثواب رجالية",
-    description: "الوصول لأفضل 5 نتائج بحث لكلمة \"ثوب سعودي\".",
-    growth: "المركز الأول",
-    metric: "في نتائج البحث"
+    img: "/search engine3.jpg",
+    category: "خدمات طبية",
+    categoryColor: "bg-red-100 text-red-800 border-red-200",
+    title: "عيادة تجميل",
+    description: "زيادة حجوزات الاستشارات عبر الموقع مع تحسين الظهور في البحث المحلي.",
+    growth: "+420%",
+    metric: "زيادة في الحجوزات"
   },
   {
-    img: "/portfolio-auto.png",
-    category: "سيارات",
-    categoryColor: "bg-yellow-100 text-yellow-800 border-yellow-200",
-    title: "مركز صيانة سيارات",
-    description: "زيا��ة العملاء المحتملين من البحث المحلي بنسبة 90%.",
-    growth: "+90%",
-    metric: "زيادة في العملاء"
+    img: "/search engine4.jpg",
+    category: "تجارة إلكترونية",
+    categoryColor: "bg-green-100 text-green-800 border-green-200",
+    title: "متجر إلكتروني للتمور",
+    description: "زيادة المبيعات عبر البحث العضوي مع تحسين معدل التحويل وتجربة المستخدم.",
+    growth: "+395%",
+    metric: "زيادة في المبيعات"
   }
 ]
 
@@ -69,7 +51,7 @@ export function PortfolioSection() {
       <div className="absolute top-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
+      <div className="container mx-auto px-4 lg:px-6 max-w-7xl relative z-10">
         <AnimatedContainer animation="fade-in-up" className="text-center mb-16">
           <div className="space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium shadow-lg border border-purple-200">

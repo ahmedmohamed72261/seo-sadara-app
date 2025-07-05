@@ -14,7 +14,7 @@ export function HeroSection() {
       <div className="absolute top-40 left-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
       
-      <div className="container mx-auto px-4 lg:px-6 relative z-10">
+      <div className="container mx-auto px-4 lg:px-6 max-w-7xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex flex-col justify-center space-y-8 text-center lg:text-right">
             <AnimatedContainer animation="fade-in-right" delay={200}>
@@ -25,9 +25,9 @@ export function HeroSection() {
                 </div> 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
                   <GradientText variant="primary" animated>
-                    حوّل ظهورك الرقمي
+                    خبراء تحسين محركات البحث
                   </GradientText>{" "}
-                  <span className="block mt-2 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">إلى نمو حقيقي</span>
+                  <span className="block mt-2 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">في المملكة العربية السعودية</span>
                 </h1>
                 <p className="max-w-xl text-lg md:text-xl lg:text-2xl text-gray-600 mx-auto lg:mx-0 leading-relaxed">
                   نحن لا نعد بالصدارة فقط، بل نحققها. استراتجيات SEO متقدمة ومبنية على البيانات لتحقيق أهدافك في السوق السعودي.

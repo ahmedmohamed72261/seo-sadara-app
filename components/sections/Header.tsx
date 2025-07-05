@@ -27,12 +27,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 shadow-lg">
       <div className="container mx-auto px-4 lg:px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 hover:scale-105 transition-all duration-300 group">
+        <Link href="/" className="flex items-center gap-2 md:gap-3 hover:scale-105 transition-all duration-300 group">
           <div className="relative">
-            <Rocket className="h-8 w-8 text-blue-600 animate-float group-hover:text-blue-700 transition-colors" />
+            <Rocket className="h-6 w-6 md:h-8 md:w-8 text-blue-600 animate-float group-hover:text-blue-700 transition-colors" />
             <div className="absolute inset-0 bg-blue-600 rounded-full opacity-0 group-hover:opacity-20 animate-ping"></div>
           </div>
-          <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             صدارة
           </span>
         </Link>
@@ -51,13 +51,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-50 to-green-50 rounded-full border-2 border-transparent bg-clip-padding hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-green-50 rounded-full border-2 border-transparent bg-clip-padding hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-green-200 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-full"></div>
             <Image 
               src="/google-partner-logo.svg" 
               alt="شريك جوجل معتمد" 
-              width={120} 
-              height={40}
+              width={80} 
+              height={26}
               className="object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </div>
@@ -111,8 +111,8 @@ export function Header() {
                   <Image 
                     src="/google-partner-logo.svg" 
                     alt="شريك جوجل معتمد" 
-                    width={100} 
-                    height={33}
+                    width={80} 
+                    height={26}
                     className="object-contain"
                   />
                 </div>

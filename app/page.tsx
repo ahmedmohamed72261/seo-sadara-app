@@ -6,6 +6,7 @@ import {
   HeroSection,
   FeaturesSection,
   ResultsSection,
+  SEOWorksSection,
   PortfolioSection,
   BlogSection,
   PricingSection,
@@ -69,6 +70,7 @@ export default function SaudiSeoLandingPage() {
         <HeroSection />
         <FeaturesSection />
         <ResultsSection />
+        <SEOWorksSection />
         <PortfolioSection />
         <BlogSection blogPosts={blogPosts} />
         <PricingSection />

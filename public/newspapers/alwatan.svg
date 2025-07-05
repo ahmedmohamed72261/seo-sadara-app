@@ -1,0 +1,8 @@
+<svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="80" height="60" rx="8" fill="#2d3748"/>
+  <text x="40" y="20" text-anchor="middle" fill="white" font-family="Arial" font-size="10" font-weight="bold">الوطن</text>
+  <text x="40" y="35" text-anchor="middle" fill="#e53e3e" font-family="Arial" font-size="8">Al-Watan</text>
+  <rect x="10" y="40" width="60" height="2" fill="#e53e3e"/>
+  <rect x="15" y="45" width="50" height="1" fill="white" opacity="0.7"/>
+  <rect x="20" y="48" width="40" height="1" fill="white" opacity="0.5"/>
+</svg>
