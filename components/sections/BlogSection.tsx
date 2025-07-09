@@ -24,10 +24,10 @@ interface Blog {
 }
 
 interface BlogSectionProps {
-  blogPosts: Blog[]
+  posts: Blog[]
 }
 
-export function BlogSection({ blogPosts }: BlogSectionProps) {
+export function BlogSection({ posts }: BlogSectionProps) {
   return (
     <section id="blog" className="relative w-full py-20 md:py-28 lg:py-36 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 overflow-hidden">
       {/* Background decorations */}
@@ -54,46 +54,60 @@ export function BlogSection({ blogPosts }: BlogSectionProps) {
         </AnimatedContainer>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <AnimatedContainer key={post._id} animation="fade-in-up" delay={index * 200}>
-              <InteractiveCard variant="lift" intensity="strong">
-                <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-                  <div className="relative overflow-hidden">
-                    <Image
-                      src={post.featuredImage?.url || "/placeholder.svg"}
-                      width={400}
-                      height={250}
-                      alt={post.title}
-                      className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                      priority={index < 2}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-lg">
-                      {post.readTime} دقائق
+          {posts && posts.length > 0 ? (
+            posts.map((post, index) => (
+              <AnimatedContainer key={post._id} animation="fade-in-up" delay={index * 200}>
+                <InteractiveCard variant="lift" intensity="strong">
+                  <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={post.featuredImage?.url || "/placeholder.svg"}
+                        width={400}
+                        height={250}
+                        alt={post.title}
+                        className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                        priority={index < 2}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-lg">
+                        {post.readTime} دقائق
+                      </div>
+                      <div className="absolute bottom-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {post.category}
+                      </div>
                     </div>
-                    <div className="absolute bottom-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {post.category}
-                    </div>
-                  </div>
-                  <CardContent className="p-6 flex flex-col flex-grow space-y-4">
-                    <h3 className="text-xl font-bold flex-grow leading-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors group/link"
-                    >
-                      <span>اقرأ المزيد</span>
-                      <ArrowLeft className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </InteractiveCard>
-            </AnimatedContainer>
-          ))}
+                    <CardContent className="p-6 flex flex-col flex-grow space-y-4">
+                      <h3 className="text-xl font-bold flex-grow leading-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed line-clamp-3">
+                        {post.excerpt}
+                      </p>
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors group/link"
+                      >
+                        <span>اقرأ المزيد</span>
+                        <ArrowLeft className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </InteractiveCard>
+              </AnimatedContainer>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <div className="space-y-4">
+                <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">لا توجد مقالات متاحة حالياً</h3>
+                <p className="text-gray-600">نعمل على إضافة محتوى جديد قريباً</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <AnimatedContainer animation="fade-in-up" delay={800} className="text-center mt-16">

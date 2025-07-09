@@ -7,12 +7,12 @@ import {
   FeaturesSection,
   ResultsSection,
   SEOWorksSection,
+  CustomSEOPackageSection,
   PortfolioSection,
   BlogSection,
-  PricingSection,
   ContactSection,
   Footer
-} from "@/components/sections"
+} from '@/components/sections'
 
 interface Blog {
   _id: string
@@ -66,14 +66,14 @@ export default function SaudiSeoLandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800">
       <Header />
-      <main className="flex-1">
+      <main className="min-h-screen">
         <HeroSection />
         <FeaturesSection />
         <ResultsSection />
         <SEOWorksSection />
+        <CustomSEOPackageSection />
         <PortfolioSection />
-        <BlogSection blogPosts={blogPosts} />
-        <PricingSection />
+        <BlogSection posts={blogPosts} />
         <ContactSection />
       </main>
       <Footer />
