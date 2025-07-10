@@ -1,9 +1,16 @@
+'use client'
+
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AnimatedContainer } from "@/components/ui/animated-container"
 import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { TrendingUp, Award } from "lucide-react"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const statsData = [
   {
@@ -87,39 +94,70 @@ export function ResultsSection() {
                 
                 <CardContent className="p-6 md:p-8 lg:p-12">
                   <div className="space-y-10 lg:space-y-12">
-                    {/* Grid of 4 Search Console Images */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 xl:gap-10">
+                    {/* Swiper for Search Console Images */}
+                    <Swiper
+                      modules={[Navigation, Pagination, Autoplay]}
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      navigation
+                      pagination={{ clickable: true }}
+                      autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                      }}
+                      breakpoints={{
+                        480: {
+                          slidesPerView: 1,
+                          spaceBetween: 15,
+                        },
+                        640: {
+                          slidesPerView: 1,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 2,
+                          spaceBetween: 25,
+                        },
+                        1024: {
+                          slidesPerView: 2,
+                          spaceBetween: 30,
+                        },
+                      }}
+                      className="results-swiper"
+                    >
                       {[1, 2, 3, 4].map((num, index) => (
-                        <div key={num} className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group-hover:border-blue-300 group-hover:shadow-2xl transition-all duration-500">
-                          <div className="aspect-[16/10] w-full">
-                            <Image
-                              src={`/search${num}.jpg`}
-                              width={600}
-                              height={375}
-                              alt={`تقرير Google Search Console ${num} - نمو المبيعات والزيارات العضوية للمتاجر الإلكترونية`}
-                              className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-110"
-                              priority={index < 2}
-                            />
+                        <SwiperSlide key={num}>
+                          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group-hover:border-blue-300 group-hover:shadow-2xl transition-all duration-500">
+                            <div className="aspect-[16/10] w-full">
+                              <Image
+                                src={`/search${num}.jpg`}
+                                width={600}
+                                height={375}
+                                alt={`تقرير Google Search Console ${num} - نمو المبيعات والزيارات العضوية للمتاجر الإلكترونية`}
+                                className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-110"
+                                priority={index < 2}
+                              />
+                            </div>
+                            
+                            {/* Overlay with gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                            
+                            {/* Growth badge */}
+                            <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2.5 rounded-full text-sm md:text-base font-bold shadow-lg group-hover:shadow-xl transition-all duration-300">
+                              <span className="flex items-center gap-2">
+                                <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
+                                +{250 + (num * 75)}%
+                              </span>
+                            </div>
+                            
+                            {/* Store label */}
+                            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-xl text-sm md:text-base font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              متجر إلكتروني #{num}
+                            </div>
                           </div>
-                          
-                          {/* Overlay with gradient */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                          
-                          {/* Growth badge */}
-                          <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2.5 rounded-full text-sm md:text-base font-bold shadow-lg group-hover:shadow-xl transition-all duration-300">
-                            <span className="flex items-center gap-2">
-                              <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
-                              +{250 + (num * 75)}%
-                            </span>
-                          </div>
-                          
-                          {/* Store label */}
-                          <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-xl text-sm md:text-base font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            متجر إلكتروني #{num}
-                          </div>
-                        </div>
+                        </SwiperSlide>
                       ))}
-                    </div>
+                    </Swiper>
                     
                     {/* Enhanced Performance indicators */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 xl:gap-8">

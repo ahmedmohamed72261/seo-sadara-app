@@ -91,14 +91,35 @@ export function Footer() {
                 شريكك الموثوق لتصدر نتائج البحث في المملكة العربية السعودية. نقدم حلول SEO مبتكرة ومقالات احترافية في أشهر الصحف العربية لتحقيق أهدافك الرقمية.
               </p>
               
-              {/* Features */}
-              <div className="grid grid-cols-1 gap-3">
-                {features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-3 text-sm text-gray-300">
-                    <feature.icon className="h-4 w-4 text-green-400" />
-                    <span>{feature.text}</span>
+              {/* Logos and Certifications */}
+              <div className="space-y-4 mb-6">
+                {/* Trade License Logo */}
+                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg  border border-blue-500/30 backdrop-blur-sm">
+                  <Image
+                    src="/trade.png"
+                    alt="مرخص من وزارة التجارة"
+                    width={160}
+                    height={70}
+                    className="object-contain"
+                  />
+                  <div className="text-right">
+                    <p className="text-base font-bold text-blue-600">مرخص من وزارة التجارة</p>
                   </div>
-                ))}
+                </div>
+                
+                {/* Google Partner Logo */}
+                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg border border-blue-500/30 backdrop-blur-sm">
+                  <Image
+                    src="/google.png"
+                    alt="شريك جوجل"
+                    width={60}
+                    height={40}
+                    className="object-contain"
+                  />
+                  <div className="text-right">
+                    <p className="text-base font-bold text-blue-600">شريك جوجل</p>
+                  </div>
+                </div>
               </div>
             </div>
             
@@ -173,42 +194,20 @@ export function Footer() {
           </div>
         </AnimatedContainer>
         
-        {/* Saudi Trade Registry Section */}
-        <AnimatedContainer animation="fade-in-up" delay={250}>
-          <div className="border-t border-gray-700 pt-8 mb-8">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-6 text-blue-400">الشهادات والتراخيص</h3>
-              <div className="inline-flex items-center gap-4 px-6 py-3 bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg border border-blue-500/30 backdrop-blur-sm hover:from-blue-800/30 hover:to-purple-800/30 transition-all duration-300">
-                <Image
-                  src="/trade.png"
-                  alt="سجل التجارة السعودي"
-                  width={50}
-                  height={50}
-                  className="object-contain"
-                />
-                <div className="text-right">
-                  <p className="text-sm font-medium text-white">سجل التجارة السعودي</p>
-                  <p className="text-xs text-gray-300">مرخص من وزارة التجارة</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </AnimatedContainer>
-        
         {/* Payment Methods Section */}
         <AnimatedContainer animation="fade-in-up" delay={300}>
           <div className="border-t border-gray-700 pt-8 mb-8">
             <h3 className="text-lg font-semibold mb-6 text-center text-blue-400">طرق الدفع المتاحة</h3>
-            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3">
+            <div className="flex flex-nowrap justify-center items-center gap-2 sm:gap-1 md:gap-2 lg:gap-3 max-w-full overflow-x-auto scrollbar-hide px-2">
               {paymentMethods.map((method, index) => (
                 <InteractiveCard key={index} variant="lift" intensity="medium">
-                  <div className="bg-white p-1 sm:p-2 rounded shadow-md hover:shadow-lg transition-all duration-300 group w-12 h-8 sm:w-16 sm:h-10 flex items-center justify-center">
+                  <div className="bg-white p-0.5 sm:p-1 md:p-2 rounded shadow-md hover:shadow-lg transition-all duration-300 group w-8 h-6 sm:w-10 sm:h-7 md:w-12 md:h-8 lg:w-16 lg:h-10 flex items-center justify-center flex-shrink-0">
                     <Image
                       src={method.image}
                       alt={method.name}
                       width={32}
                       height={22}
-                      className="object-contain group-hover:scale-105 transition-transform duration-300 w-8 h-5 sm:w-12 sm:h-7"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300 w-5 h-3 sm:w-6 sm:h-4 md:w-8 md:h-5 lg:w-12 lg:h-7 max-w-full max-h-full"
                     />
                   </div>
                 </InteractiveCard>

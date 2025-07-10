@@ -1,9 +1,16 @@
+'use client'
+
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { AnimatedContainer } from "@/components/ui/animated-container"
 import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { Users } from "lucide-react"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const portfolioItems = [
   {
@@ -68,42 +75,73 @@ export function PortfolioSection() {
           </div>
         </AnimatedContainer>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+          480: {
+          slidesPerView: 1,
+          spaceBetween: 15,
+          },
+          640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+          },
+          768: {
+          slidesPerView: 2,
+          spaceBetween: 25,
+          },
+          1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          },
+          }}
+          className="portfolio-swiper"
+        >
           {portfolioItems.map((item, index) => (
-            <AnimatedContainer key={index} animation="fade-in-up" delay={index * 100}>
-              <InteractiveCard variant="lift" intensity="strong">
-                <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-                  <div className="relative overflow-hidden">
-                    <Image
-                      src={item.img}
-                      width={400}
-                      height={300}
-                      alt={item.title}
-                      className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                      priority={index < 3}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-green-600 shadow-lg">
-                      {item.growth}
+            <SwiperSlide key={index}>
+              <AnimatedContainer animation="fade-in-up" delay={index * 100}>
+                <InteractiveCard variant="lift" intensity="strong">
+                  <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={item.img}
+                        width={400}
+                        height={300}
+                        alt={item.title}
+                        className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                        priority={index < 3}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-green-600 shadow-lg">
+                        {item.growth}
+                      </div>
                     </div>
-                  </div>
-                  <CardContent className="p-6 space-y-4">
-                    <div>
-                      <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full border ${item.categoryColor}`}>
-                        {item.category}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                    <div className="pt-2 border-t border-gray-100">
-                      <span className="text-sm text-gray-500">{item.metric}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </InteractiveCard>
-            </AnimatedContainer>
+                    <CardContent className="p-6 space-y-4">
+                      <div>
+                        <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full border ${item.categoryColor}`}>
+                          {item.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                      <div className="pt-2 border-t border-gray-100">
+                        <span className="text-sm text-gray-500">{item.metric}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </InteractiveCard>
+              </AnimatedContainer>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   )

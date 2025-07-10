@@ -11,6 +11,11 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, Plus, Minus, Newspaper, Link, Calculator } from "lucide-react"
 import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 // Newspaper and media logos for article publishing
 const newspaperLogos = [
@@ -266,58 +271,88 @@ export function PricingSection() {
           </TabsList>
           
           <TabsContent value="standard">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              navigation
+              pagination={{ clickable: true }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+              breakpoints={{
+                480: {
+                  slidesPerView: 1,
+                  spaceBetween: 15,
+                },
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 25,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                },
+              }}
+              className="pricing-swiper max-w-5xl mx-auto"
+            >
               {pricingPlans.map((plan, index) => (
-                <AnimatedContainer 
-                  key={index} 
-                  animation={plan.popular ? "scale-in" : "fade-in-up"} 
-                  delay={plan.delay}
-                >
-                  <InteractiveCard variant="lift" intensity={plan.popular ? "strong" : "medium"}>
-                    <Card className={`h-full bg-white shadow-lg border-0 hover:shadow-xl transition-all duration-300 flex flex-col ${
-                      plan.popular ? 'border-blue-600 border-2 relative shadow-xl' : ''
-                    }`}>
-                      {plan.popular && (
-                        <div className="absolute top-0 -translate-y-1/2 w-full flex justify-center">
-                          <div className="rounded-full bg-blue-600 px-4 py-1 text-sm font-semibold text-white">
-                            الأكثر شيوعاً
+                <SwiperSlide key={index}>
+                  <AnimatedContainer 
+                    animation={plan.popular ? "scale-in" : "fade-in-up"} 
+                    delay={plan.delay}
+                  >
+                    <InteractiveCard variant="lift" intensity={plan.popular ? "strong" : "medium"}>
+                      <Card className={`h-full bg-white shadow-lg border-0 hover:shadow-xl transition-all duration-300 flex flex-col ${
+                        plan.popular ? 'border-blue-600 border-2 relative shadow-xl' : ''
+                      }`}>
+                        {plan.popular && (
+                          <div className="absolute top-0 -translate-y-1/2 w-full flex justify-center">
+                            <div className="rounded-full bg-blue-600 px-4 py-1 text-sm font-semibold text-white">
+                              الأكثر شيوعاً
+                            </div>
                           </div>
-                        </div>
-                      )}
-                      <CardHeader className={`pb-4 ${plan.popular ? 'pt-8' : ''}`}>
-                        <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                        <CardDescription>{plan.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-6 flex-1">
-                        <div className="text-4xl font-bold">
-                          {plan.price} {plan.currency && <span className="text-lg font-normal text-gray-500">{plan.currency}</span>}
-                        </div>
-                        <ul className="space-y-3 text-base">
-                          {plan.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-center gap-3">
-                              <Check className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                      <CardContent className="pt-0">
-                        <Button 
-                          variant={plan.buttonVariant} 
-                          className={`w-full h-11 rounded-full text-base ${
-                            plan.buttonVariant === 'default' 
-                              ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                              : 'border-blue-600 text-blue-600 hover:bg-blue-50'
-                          }`}
-                        >
-                          {plan.buttonText}
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </InteractiveCard>
-                </AnimatedContainer>
+                        )}
+                        <CardHeader className={`pb-4 ${plan.popular ? 'pt-8' : ''}`}>
+                          <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                          <CardDescription>{plan.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-6 flex-1">
+                          <div className="text-4xl font-bold">
+                            {plan.price} {plan.currency && <span className="text-lg font-normal text-gray-500">{plan.currency}</span>}
+                          </div>
+                          <ul className="space-y-3 text-base">
+                            {plan.features.map((feature, featureIndex) => (
+                              <li key={featureIndex} className="flex items-center gap-3">
+                                <Check className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                                <span>{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                        <CardContent className="pt-0">
+                          <Button 
+                            variant={plan.buttonVariant} 
+                            className={`w-full h-11 rounded-full text-base ${
+                              plan.buttonVariant === 'default' 
+                                ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                                : 'border-blue-600 text-blue-600 hover:bg-blue-50'
+                            }`}
+                          >
+                            {plan.buttonText}
+                          </Button>
+                        </CardContent>
+                      </Card>
+                    </InteractiveCard>
+                  </AnimatedContainer>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </TabsContent>
           
           <TabsContent value="custom">

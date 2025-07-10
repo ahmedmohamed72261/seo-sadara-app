@@ -1,0 +1,423 @@
+/* Custom Swiper Styles */
+
+/* Enhanced Navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #2563eb !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)) !important;
+  backdrop-filter: blur(15px) !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: -25px !important;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15), 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: 2px solid rgba(37, 99, 235, 0.3) !important;
+  z-index: 10 !important;
+  opacity: 0.9 !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  color: white !important;
+  transform: scale(1.15) translateY(-2px) !important;
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.4), 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  border-color: #1d4ed8 !important;
+  opacity: 1 !important;
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: scale(1.05) translateY(0px) !important;
+  transition: all 0.1s ease !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enhanced arrow positioning */
+.swiper-button-next {
+  right: 15px !important;
+}
+
+.swiper-button-prev {
+  left: 15px !important;
+}
+
+/* Pagination dots */
+.swiper-pagination-bullet {
+  background: rgba(37, 99, 235, 0.3) !important;
+  opacity: 1 !important;
+  width: 12px !important;
+  height: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2563eb !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important;
+}
+
+/* Pagination container */
+.swiper-pagination {
+  bottom: -50px !important;
+}
+
+/* Swiper container spacing */
+.blog-swiper,
+.portfolio-swiper,
+.pricing-swiper,
+.results-swiper,
+.seo-works-swiper {
+  padding-bottom: 60px !important;
+  overflow: visible !important;
+}
+
+/* RTL support for Arabic content */
+.swiper-rtl .swiper-button-next {
+  left: 10px !important;
+  right: auto !important;
+}
+
+.swiper-rtl .swiper-button-prev {
+  right: 10px !important;
+  left: auto !important;
+}
+
+/* Enhanced Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 42px !important;
+    height: 42px !important;
+    margin-top: -21px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9)) !important;
+    box-shadow: 0 6px 24px rgba(37, 99, 235, 0.2), 0 3px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .swiper-button-next {
+    right: 8px !important;
+  }
+  
+  .swiper-button-prev {
+    left: 8px !important;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+  }
+  
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 8px 28px rgba(37, 99, 235, 0.35), 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .swiper-pagination {
+    bottom: -45px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 4px !important;
+  }
+  
+  .blog-swiper,
+  .portfolio-swiper,
+  .pricing-swiper,
+  .results-swiper,
+  .seo-works-swiper,
+  .reviews-swiper {
+    padding-bottom: 55px !important;
+    margin: 0 -8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 38px !important;
+    height: 38px !important;
+    margin-top: -19px !important;
+  }
+  
+  .swiper-button-next {
+    right: 5px !important;
+  }
+  
+  .swiper-button-prev {
+    left: 5px !important;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 14px !important;
+  }
+  
+  .blog-swiper,
+  .portfolio-swiper,
+  .pricing-swiper,
+  .results-swiper,
+  .seo-works-swiper,
+  .reviews-swiper {
+    margin: 0 -5px !important;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 46px !important;
+    height: 46px !important;
+    margin-top: -23px !important;
+  }
+  
+  .swiper-button-next {
+    right: 12px !important;
+  }
+  
+  .swiper-button-prev {
+    left: 12px !important;
+  }
+}
+
+/* Smooth slide transitions */
+.swiper-slide {
+  transition: transform 0.3s ease !important;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-5px) !important;
+}
+
+/* Custom loading state */
+.swiper-container-loading {
+  opacity: 0.5;
+}
+
+/* Autoplay pause on hover */
+.swiper:hover .swiper-wrapper {
+  animation-play-state: paused !important;
+}
+
+/* Enhanced shadow effects */
+.swiper-slide .card,
+.swiper-slide .Card {
+  transition: all 0.3s ease !important;
+}
+
+.swiper-slide:hover .card,
+.swiper-slide:hover .Card {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Gradient overlay for better readability */
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 10 !important;
+}
+
+/* Accessibility improvements */
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+.swiper-pagination-bullet:focus {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* Full Review Images Styles */
+.reviews-swiper {
+  padding-bottom: 60px !important;
+  overflow: visible !important;
+}
+
+.review-image-slide {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.review-image-slide:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.review-image-slide img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  border-radius: 16px !important;
+  transition: all 0.4s ease !important;
+}
+
+.review-image-slide:hover img {
+  transform: scale(1.05) !important;
+}
+
+/* Review overlay effects */
+.review-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(29, 78, 216, 0.2)) !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s ease !important;
+  border-radius: 16px !important;
+}
+
+.review-image-slide:hover .review-overlay {
+  opacity: 1 !important;
+}
+
+/* Review badge */
+.review-badge {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3) !important;
+  z-index: 2 !important;
+}
+
+/* Lightbox styles for full image view */
+.review-lightbox {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: all 0.3s ease !important;
+}
+
+.review-lightbox.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.review-lightbox img {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  object-fit: contain !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+.review-lightbox-close {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+  color: white !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.review-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Mobile adjustments for reviews */
+@media (max-width: 768px) {
+  .review-badge {
+    top: 12px !important;
+    right: 12px !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+  
+  .review-lightbox img {
+    max-width: 95% !important;
+    max-height: 85% !important;
+  }
+  
+  .review-lightbox-close {
+    top: 15px !important;
+    right: 15px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* Enhanced pagination for reviews */
+.reviews-swiper .swiper-pagination-bullet {
+  background: rgba(37, 99, 235, 0.4) !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+  background: #2563eb !important;
+  transform: scale(1.3) !important;
+  box-shadow: 0 3px 12px rgba(37, 99, 235, 0.5) !important;
+}
+
+/* Touch gestures enhancement */
+.swiper-slide {
+  cursor: grab !important;
+}
+
+.swiper-slide:active {
+  cursor: grabbing !important;
+}
+
+/* Loading animation for images */
+.review-image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 1.5s infinite !important;
+  border-radius: 16px !important;
+  min-height: 300px !important;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
