@@ -9,10 +9,10 @@ import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { ArrowLeft } from "lucide-react"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
 
 interface Blog {
   _id: string
@@ -59,79 +59,110 @@ export function BlogSection({ posts }: BlogSectionProps) {
         </AnimatedContainer>
 
         {posts && posts.length > 0 ? (
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              480: {
-                slidesPerView: 1,
-                spaceBetween: 15,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 25,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
-            className="blog-swiper"
-          >
-            {posts.map((post, index) => (
-              <SwiperSlide key={post._id}>
-                <AnimatedContainer animation="fade-in-up" delay={index * 200}>
-                  <InteractiveCard variant="lift" intensity="strong">
-                    <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-                      <div className="relative overflow-hidden">
-                        <Image
-                          src={post.featuredImage?.url || "/placeholder.svg"}
-                          width={400}
-                          height={250}
-                          alt={post.title}
-                          className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                          priority={index < 2}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-lg">
-                          {post.readTime} دقائق
+          <div className="relative">
+            <Swiper
+              modules={[Pagination, Autoplay, EffectCoverflow]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ 
+                clickable: true,
+                dynamicBullets: true,
+                el: '.blog-pagination'
+              }}
+              autoplay={{
+                delay: 3800,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              loop={true}
+              speed={1100}
+              effect="coverflow"
+              coverflowEffect={{
+                rotate: 15,
+                stretch: 0,
+                depth: 150,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              centeredSlides={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 20,
+                  effect: "coverflow",
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 25,
+                  effect: "coverflow",
+                },
+                1024: {
+                  slidesPerView: 2.5,
+                  spaceBetween: 30,
+                  effect: "coverflow",
+                },
+                1280: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+                  effect: "coverflow",
+                },
+              }}
+              className="blog-swiper !pb-16 !overflow-visible"
+            >
+              {posts.map((post, index) => (
+                <SwiperSlide key={post._id} className="!h-auto">
+                  <AnimatedContainer animation="fade-in-up" delay={index * 200}>
+                    <InteractiveCard variant="lift" intensity="strong">
+                      <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-700 overflow-hidden group transform-gpu">
+                        <div className="relative overflow-hidden">
+                          <Image
+                            src={post.featuredImage?.url || "/placeholder.svg"}
+                            width={400}
+                            height={250}
+                            alt={post.title}
+                            className="w-full h-60 object-cover object-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                            priority={index < 2}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                          
+                          {/* Reading time badge */}
+                          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                            {post.readTime} دقائق
+                          </div>
+                          
+                          {/* Category badge */}
+                          <div className="absolute bottom-4 right-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                            {post.category}
+                          </div>
+
+                          {/* Shimmer effect */}
+                          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
                         </div>
-                        <div className="absolute bottom-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          {post.category}
-                        </div>
-                      </div>
-                      <CardContent className="p-6 flex flex-col flex-grow space-y-4">
-                        <h3 className="text-xl font-bold flex-grow leading-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                          {post.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                        <Link
-                          href={`/blog/${post.slug}`}
-                          className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors group/link"
-                        >
-                          <span>اقرأ المزيد</span>
-                          <ArrowLeft className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                        </Link>
-                      </CardContent>
-                    </Card>
-                  </InteractiveCard>
-                </AnimatedContainer>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                        <CardContent className="p-6 flex flex-col flex-grow space-y-4">
+                          <h3 className="text-xl font-bold flex-grow leading-tight text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                            {post.title}
+                          </h3>
+                          <p className="text-gray-600 leading-relaxed line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+                            {post.excerpt}
+                          </p>
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="inline-flex items-center gap-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition-all duration-300 group/link mt-auto"
+                          >
+                            <span>اقرأ المزيد</span>
+                            <ArrowLeft className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    </InteractiveCard>
+                  </AnimatedContainer>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Custom Pagination */}
+            <div className="blog-pagination flex justify-center mt-8"></div>
+          </div>
         ) : (
           <div className="text-center py-12">
             <div className="space-y-4">
@@ -152,6 +183,47 @@ export function BlogSection({ posts }: BlogSectionProps) {
           </Button>
         </AnimatedContainer>
       </div>
+
+      <style jsx global>{`
+        .blog-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .blog-swiper .swiper-pagination-bullet-active {
+          background: linear-gradient(45deg, #6366f1, #06b6d4);
+          transform: scale(1.3);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        
+        .blog-swiper .swiper-slide {
+          height: auto;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .blog-swiper .swiper-slide-active {
+          transform: scale(1.05);
+        }
+        
+        .blog-swiper .swiper-slide:not(.swiper-slide-active) {
+          opacity: 0.8;
+          transform: scale(0.95);
+        }
+        
+        .blog-swiper .swiper-wrapper {
+          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .blog-swiper .swiper-slide-shadow-left,
+        .blog-swiper .swiper-slide-shadow-right {
+          background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+        }
+      `}</style>
     </section>
   )
 }

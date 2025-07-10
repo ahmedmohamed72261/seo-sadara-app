@@ -9,6 +9,7 @@ import {
   SEOWorksSection,
   CustomSEOPackageSection,
   PortfolioSection,
+  BrandsSection,
   BlogSection,
   ContactSection,
   Footer
@@ -74,6 +75,7 @@ export default function SaudiSeoLandingPage() {
         <CustomSEOPackageSection />
         <PortfolioSection />
         <BlogSection posts={blogPosts} />
+        <BrandsSection />
         <ContactSection />
       </main>
       <Footer />

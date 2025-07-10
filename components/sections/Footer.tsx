@@ -82,8 +82,8 @@ export function Footer() {
         <AnimatedContainer animation="fade-in-up">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
             {/* Company Info */}
-            <div className="lg:col-span-2 space-y-6">
-              <div className="flex items-center gap-3">
+            <div className="lg:col-span-2 space-y-6 text-center md:text-right">
+              <div className="flex items-center gap-3 justify-center md:justify-start">
                 <Rocket className="h-8 w-8 text-blue-500 animate-float" />
                 <span className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">صدارة</span>
               </div>
@@ -94,7 +94,7 @@ export function Footer() {
               {/* Logos and Certifications */}
               <div className="space-y-4 mb-6">
                 {/* Trade License Logo */}
-                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg  border border-blue-500/30 backdrop-blur-sm">
+                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg border border-blue-500/30 backdrop-blur-sm justify-center md:justify-start">
                   <Image
                     src="/trade.png"
                     alt="مرخص من وزارة التجارة"
@@ -102,13 +102,13 @@ export function Footer() {
                     height={70}
                     className="object-contain"
                   />
-                  <div className="text-right">
+                  <div className="text-center md:text-right">
                     <p className="text-base font-bold text-blue-600">مرخص من وزارة التجارة</p>
                   </div>
                 </div>
                 
                 {/* Google Partner Logo */}
-                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg border border-blue-500/30 backdrop-blur-sm">
+                <div className="flex items-center gap-3 p-3 bg-gray-200 rounded-lg border border-blue-500/30 backdrop-blur-sm justify-center md:justify-start">
                   <Image
                     src="/google.png"
                     alt="شريك جوجل"
@@ -116,7 +116,7 @@ export function Footer() {
                     height={40}
                     className="object-contain"
                   />
-                  <div className="text-right">
+                  <div className="text-center md:text-right">
                     <p className="text-base font-bold text-blue-600">شريك جوجل</p>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export function Footer() {
             </div>
             
             {/* Quick Links */}
-            <div>
+            <div className="text-center md:text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">روابط سريعة</h3>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
@@ -140,7 +140,7 @@ export function Footer() {
             </div>
             
             {/* Contact Info */}
-            <div>
+            <div className="text-center md:text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">تواصل معنا</h3>
               <ul className="space-y-4">
                 {contactInfo.map((info, index) => (
@@ -149,7 +149,7 @@ export function Footer() {
                       {info.href ? (
                         <Link 
                           href={info.href} 
-                          className={`flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group ${
+                          className={`flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group justify-center md:justify-start ${
                             info.whatsapp ? 'hover:text-green-400' : ''
                           }`}
                           target={info.whatsapp ? '_blank' : undefined}
@@ -161,7 +161,7 @@ export function Footer() {
                           <span className="group-hover:translate-x-1 transition-transform duration-300">{info.text}</span>
                         </Link>
                       ) : (
-                        <div className="flex items-center gap-3 text-gray-300">
+                        <div className="flex items-center gap-3 text-gray-300 justify-center md:justify-start">
                           <info.icon className="h-5 w-5 text-blue-500 flex-shrink-0" />
                           <span>{info.text}</span>
                         </div>
@@ -173,9 +173,9 @@ export function Footer() {
             </div>
             
             {/* Social Links */}
-            <div>
+            <div className="text-center md:text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">تابعنا</h3>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 items-center md:items-start">
                 {socialLinks.map((social, index) => (
                   <AnimatedContainer key={index} animation="scale-in" delay={index * 150}>
                     <InteractiveCard variant="scale" intensity="strong">

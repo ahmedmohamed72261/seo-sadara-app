@@ -27,7 +27,7 @@ export function HeroSection() {
           {/* Main Content */}
           <div className="max-w-5xl mx-auto space-y-8">
             <AnimatedContainer animation="fade-in-up" delay={200}>
-              <div className="inline-flex items-center px-6 py-3 bg-blue-500/10 text-blue-300 rounded-full text-sm font-medium shadow-lg border border-blue-500/20 backdrop-blur-sm">
+              <div className="inline-flex items-center px-6 py-3 bg-white/90 text-blue-800 rounded-full text-sm font-bold shadow-lg border border-blue-500/20 backdrop-blur-sm">
                 <Zap className="w-4 h-4 mr-2 animate-pulse" />
                 الشركة الرائدة في تحسين محركات البحث بالمملكة
               </div>
@@ -140,9 +140,9 @@ export function HeroSection() {
 
           {/* Social Proof */}
           <AnimatedContainer animation="fade-in-up" delay={1400}>
-            <div className="flex items-center justify-center space-x-8 pt-12">
+            <div className="flex columns flex-wrap md:space-y-2 sm:space-y-10 items-center justify-center space-x-8 pt-12">
               <div className="flex items-center space-x-2">
-                <div className="flex -space-x-2 me-3">
+                <div className="flex -space-x-7 me-8">
                   <Image
                     src="/user1.jpg"
                     width={40}
@@ -174,7 +174,7 @@ export function HeroSection() {
                 </div>
                 <span className="text-blue-200 font-medium">+500 عميل راضٍ</span>
               </div>
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center sm:mt-3 space-x-1">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />

@@ -7,10 +7,10 @@ import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { Users } from "lucide-react"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
 
 const portfolioItems = [
   {
@@ -18,7 +18,7 @@ const portfolioItems = [
     category: "عقارات",
     categoryColor: "bg-purple-100 text-purple-800 border-purple-200",
     title: "شركة تطوير عقاري",
-    description: "تصدر نتائج البحث لكلمة \"شقق للبيع في الرياض\" مع نمو استثنائي في الزيارات العضوية.",
+    description: "تصدر نتائج البحث لكلمة \"شقق للبيع في الرياض\" مع نمو استثنائي في الزيارات ��لعضوية.",
     growth: "+285%",
     metric: "زيادة في الاستفسارات"
   },
@@ -47,7 +47,7 @@ const portfolioItems = [
     title: "متجر إلكتروني للتمور",
     description: "زيادة المبيعات عبر البحث العضوي مع تحسين معدل التحويل وتجربة المستخدم.",
     growth: "+395%",
-    metric: "زيادة في المبيعات"
+    metric: "زيادة في ��لمبيعات"
   }
 ]
 
@@ -75,74 +75,164 @@ export function PortfolioSection() {
           </div>
         </AnimatedContainer>
 
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-          480: {
-          slidesPerView: 1,
-          spaceBetween: 15,
-          },
-          640: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-          },
-          768: {
-          slidesPerView: 2,
-          spaceBetween: 25,
-          },
-          1024: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          },
-          }}
-          className="portfolio-swiper"
-        >
-          {portfolioItems.map((item, index) => (
-            <SwiperSlide key={index}>
-              <AnimatedContainer animation="fade-in-up" delay={index * 100}>
-                <InteractiveCard variant="lift" intensity="strong">
-                  <Card className="h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-500 overflow-hidden group">
-                    <div className="relative overflow-hidden">
-                      <Image
-                        src={item.img}
-                        width={400}
-                        height={300}
-                        alt={item.title}
-                        className="w-full h-60 object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                        priority={index < 3}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-green-600 shadow-lg">
-                        {item.growth}
+        <div className="relative">
+          <Swiper
+            modules={[Pagination, Autoplay, EffectCoverflow]}
+            spaceBetween={30}
+            slidesPerView={1}
+            pagination={{ 
+              clickable: true,
+              dynamicBullets: true,
+              el: '.portfolio-pagination'
+            }}
+            autoplay={{
+              delay: 3200,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            loop={true}
+            speed={1200}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 15,
+              stretch: 0,
+              depth: 200,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            allowTouchMove={true}
+            centeredSlides={true}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                effect: "slide",
+              },
+              640: {
+                slidesPerView: 1.5,
+                spaceBetween: 25,
+                effect: "coverflow",
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                effect: "coverflow",
+              },
+              1024: {
+                slidesPerView: 2.5,
+                spaceBetween: 35,
+                effect: "coverflow",
+              },
+              1280: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                effect: "coverflow",
+              },
+            }}
+            className="portfolio-swiper !pb-16 !overflow-visible"
+          >
+            {portfolioItems.map((item, index) => (
+              <SwiperSlide key={index} className="!h-auto">
+                <AnimatedContainer animation="fade-in-up" delay={index * 100}>
+                  <InteractiveCard variant="lift" intensity="strong">
+                    <Card className="h-full bg-white shadow-2xl border-0 hover:shadow-3xl transition-all duration-700 overflow-hidden group relative transform-gpu">
+                      <div className="relative overflow-hidden">
+                        <Image
+                          src={item.img}
+                          width={400}
+                          height={300}
+                          alt={item.title}
+                          className="w-full h-64 object-cover object-center transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                          priority={index < 3}
+                        />
+                        
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        
+                        {/* Growth indicator with animation */}
+                        <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                          <span className="inline-block animate-pulse">{item.growth}</span>
+                        </div>
+
+                        {/* Category badge */}
+                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                          <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full border ${item.categoryColor}`}>
+                            {item.category}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <CardContent className="p-6 space-y-4">
-                      <div>
-                        <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full border ${item.categoryColor}`}>
-                          {item.category}
-                        </span>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                      <div className="pt-2 border-t border-gray-100">
-                        <span className="text-sm text-gray-500">{item.metric}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </InteractiveCard>
-              </AnimatedContainer>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+
+                      <CardContent className="p-6 space-y-4 relative z-10">
+                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors duration-300">{item.title}</h3>
+                        <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{item.description}</p>
+                        <div className="pt-2 border-t border-gray-100 group-hover:border-purple-200 transition-colors duration-300">
+                          <span className="text-sm text-gray-500 group-hover:text-purple-600 transition-colors duration-300 font-medium">{item.metric}</span>
+                        </div>
+                      </CardContent>
+
+                      {/* Shimmer effect */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
+                    </Card>
+                  </InteractiveCard>
+                </AnimatedContainer>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Pagination */}
+          <div className="portfolio-pagination flex justify-center mt-8"></div>
+        </div>
       </div>
+
+      <style jsx global>{`
+        .portfolio-swiper .swiper-pagination-bullet {
+          width: 14px;
+          height: 14px;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .portfolio-swiper .swiper-pagination-bullet-active {
+          background: linear-gradient(45deg, #f59e0b, #ec4899);
+          transform: scale(1.3);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+        
+        .portfolio-swiper .swiper-slide {
+          height: auto;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .portfolio-swiper .swiper-slide-active {
+          transform: scale(1.05);
+        }
+        
+        .portfolio-swiper .swiper-slide:not(.swiper-slide-active) {
+          opacity: 0.8;
+          transform: scale(0.95);
+        }
+        
+        .portfolio-swiper .swiper-slide > div {
+          height: 100%;
+        }
+
+        .portfolio-swiper .swiper-slide-shadow-left,
+        .portfolio-swiper .swiper-slide-shadow-right {
+          background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+        }
+
+        .portfolio-swiper .swiper-wrapper {
+          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Enhanced shadow for professional look */
+        .shadow-3xl {
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+      `}</style>
     </section>
   )
 }

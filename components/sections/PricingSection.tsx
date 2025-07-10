@@ -12,10 +12,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, Plus, Minus, Newspaper, Link, Calculator } from "lucide-react"
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
 
 // Newspaper and media logos for article publishing
 const newspaperLogos = [
@@ -49,7 +49,7 @@ const pricingPlans = [
     name: "الاحترافية",
     description: "للشركات المتوسطة والنامية",
     price: "3,500",
-    currency: "ر.س/شهرياً",
+    currency: "ر.س/شهريا",
     features: [
       "تحليل 50 كلمة مفتاحية",
       "فحص فني شامل للموقع",
@@ -271,88 +271,106 @@ export function PricingSection() {
           </TabsList>
           
           <TabsContent value="standard">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              autoplay={{
-                delay: 5000,
-                disableOnInteraction: false,
-              }}
-              breakpoints={{
-                480: {
-                  slidesPerView: 1,
-                  spaceBetween: 15,
-                },
-                640: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 25,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-                },
-              }}
-              className="pricing-swiper max-w-5xl mx-auto"
-            >
-              {pricingPlans.map((plan, index) => (
-                <SwiperSlide key={index}>
-                  <AnimatedContainer 
-                    animation={plan.popular ? "scale-in" : "fade-in-up"} 
-                    delay={plan.delay}
-                  >
-                    <InteractiveCard variant="lift" intensity={plan.popular ? "strong" : "medium"}>
-                      <Card className={`h-full bg-white shadow-lg border-0 hover:shadow-xl transition-all duration-300 flex flex-col ${
-                        plan.popular ? 'border-blue-600 border-2 relative shadow-xl' : ''
-                      }`}>
-                        {plan.popular && (
-                          <div className="absolute top-0 -translate-y-1/2 w-full flex justify-center">
-                            <div className="rounded-full bg-blue-600 px-4 py-1 text-sm font-semibold text-white">
-                              الأكثر شيوعاً
+            <div className="relative">
+              <Swiper
+                modules={[Pagination, Autoplay, EffectCoverflow]}
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{ 
+                  clickable: true,
+                  dynamicBullets: true,
+                  el: '.pricing-pagination'
+                }}
+                autoplay={{
+                  delay: 4500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: false,
+                }}
+                loop={true}
+                speed={1200}
+                effect="coverflow"
+                coverflowEffect={{
+                  rotate: 20,
+                  stretch: 0,
+                  depth: 200,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                centeredSlides={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    effect: "slide",
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 25,
+                    effect: "coverflow",
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                    effect: "coverflow",
+                  },
+                }}
+                className="pricing-swiper max-w-5xl mx-auto !pb-16"
+              >
+                {pricingPlans.map((plan, index) => (
+                  <SwiperSlide key={index} className="!h-auto">
+                    <AnimatedContainer 
+                      animation={plan.popular ? "scale-in" : "fade-in-up"} 
+                      delay={plan.delay}
+                    >
+                      <InteractiveCard variant="lift" intensity={plan.popular ? "strong" : "medium"}>
+                        <Card className={`h-full bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-700 flex flex-col transform-gpu ${
+                          plan.popular ? 'border-blue-600 border-2 relative shadow-2xl scale-105' : ''
+                        }`}>
+                          {plan.popular && (
+                            <div className="absolute top-0 -translate-y-1/2 w-full flex justify-center">
+                              <div className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-semibold text-white shadow-lg">
+                                الأكثر شيوعاً
+                              </div>
                             </div>
-                          </div>
-                        )}
-                        <CardHeader className={`pb-4 ${plan.popular ? 'pt-8' : ''}`}>
-                          <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
-                          <CardDescription>{plan.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="space-y-6 flex-1">
-                          <div className="text-4xl font-bold">
-                            {plan.price} {plan.currency && <span className="text-lg font-normal text-gray-500">{plan.currency}</span>}
-                          </div>
-                          <ul className="space-y-3 text-base">
-                            {plan.features.map((feature, featureIndex) => (
-                              <li key={featureIndex} className="flex items-center gap-3">
-                                <Check className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </CardContent>
-                        <CardContent className="pt-0">
-                          <Button 
-                            variant={plan.buttonVariant} 
-                            className={`w-full h-11 rounded-full text-base ${
-                              plan.buttonVariant === 'default' 
-                                ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-                                : 'border-blue-600 text-blue-600 hover:bg-blue-50'
-                            }`}
-                          >
-                            {plan.buttonText}
-                          </Button>
-                        </CardContent>
-                      </Card>
-                    </InteractiveCard>
-                  </AnimatedContainer>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                          )}
+                          <CardHeader className={`pb-4 ${plan.popular ? 'pt-8' : ''}`}>
+                            <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                            <CardDescription>{plan.description}</CardDescription>
+                          </CardHeader>
+                          <CardContent className="space-y-6 flex-1">
+                            <div className="text-4xl font-bold">
+                              {plan.price} {plan.currency && <span className="text-lg font-normal text-gray-500">{plan.currency}</span>}
+                            </div>
+                            <ul className="space-y-3 text-base">
+                              {plan.features.map((feature, featureIndex) => (
+                                <li key={featureIndex} className="flex items-center gap-3">
+                                  <Check className="h-5 w-5 text-blue-500 flex-shrink-0" />
+                                  <span>{feature}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </CardContent>
+                          <CardContent className="pt-0">
+                            <Button 
+                              variant={plan.buttonVariant} 
+                              className={`w-full h-11 rounded-full text-base transition-all duration-300 ${
+                                plan.buttonVariant === 'default' 
+                                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl' 
+                                  : 'border-blue-600 text-blue-600 hover:bg-blue-50'
+                              }`}
+                            >
+                              {plan.buttonText}
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </InteractiveCard>
+                    </AnimatedContainer>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Custom Pagination */}
+              <div className="pricing-pagination flex justify-center mt-8"></div>
+            </div>
           </TabsContent>
           
           <TabsContent value="custom">
@@ -364,6 +382,42 @@ export function PricingSection() {
           </TabsContent>
         </Tabs>
       </div>
+
+      <style jsx global>{`
+        .pricing-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .pricing-swiper .swiper-pagination-bullet-active {
+          background: linear-gradient(45deg, #f59e0b, #f97316);
+          transform: scale(1.3);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+        
+        .pricing-swiper .swiper-slide {
+          height: auto;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .pricing-swiper .swiper-slide-active {
+          transform: scale(1.05);
+        }
+        
+        .pricing-swiper .swiper-slide:not(.swiper-slide-active) {
+          opacity: 0.8;
+          transform: scale(0.95);
+        }
+        
+        .pricing-swiper .swiper-wrapper {
+          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+      `}</style>
     </section>
   )
 }

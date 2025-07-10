@@ -19,10 +19,10 @@ import {
   Target
 } from "lucide-react"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-fade'
 
 const seoWorks = [
   {
@@ -119,7 +119,7 @@ export function SEOWorksSection() {
           <div className="space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium shadow-lg border border-blue-200">
               <Award className="w-4 h-4 mr-2" />
-              أعمالنا ونتائجنا
+              أعمالنا ونتا��جنا
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
               <GradientText variant="primary">مشاريع SEO ناجحة</GradientText>{" "}
@@ -131,146 +131,159 @@ export function SEOWorksSection() {
           </div>
         </AnimatedContainer>
 
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-            },
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 1,
-              spaceBetween: 25,
-            },
-            1024: {
-              slidesPerView: 2,
-              spaceBetween: 30,
-            },
-          }}
-          className="seo-works-swiper"
-        >
-          {seoWorks.map((work, index) => (
-            <SwiperSlide key={work.id}>
-              <AnimatedContainer animation="fade-in-up" delay={index * 200}>
-                <InteractiveCard variant="lift" intensity="medium">
-                  <Card className="overflow-hidden shadow-xl border-0 hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm">
-                    {/* Project Image */}
-                    <div className="relative overflow-hidden group">
-                      <Image
-                        src={work.image}
-                        alt={work.title}
-                        width={600}
-                        height={300}
-                        className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-blue-600 text-white shadow-lg">
-                          {work.category}
-                        </Badge>
-                      </div>
-                      <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Button asChild size="sm" className="bg-white text-blue-600 hover:bg-blue-50">
-                          <Link href={work.websiteUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            زيارة الموقع
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-
-                    <CardHeader className="pb-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="text-xl font-bold text-gray-900">
-                          {work.title}
-                        </CardTitle>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          {work.duration}
+        <div className="relative">
+          <Swiper
+            modules={[Pagination, Autoplay, EffectFade]}
+            spaceBetween={30}
+            slidesPerView={1}
+            pagination={{ 
+              clickable: true,
+              dynamicBullets: true,
+              el: '.seo-works-pagination'
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            loop={true}
+            speed={1000}
+            effect="fade"
+            fadeEffect={{
+              crossFade: true
+            }}
+            breakpoints={{
+              768: {
+                slidesPerView: 1,
+                effect: "slide",
+                speed: 1200,
+              },
+              1024: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                effect: "slide",
+                speed: 1200,
+              },
+            }}
+            className="seo-works-swiper !pb-16"
+          >
+            {seoWorks.map((work, index) => (
+              <SwiperSlide key={work.id} className="!h-auto">
+                <AnimatedContainer animation="fade-in-up" delay={index * 200}>
+                  <InteractiveCard variant="lift" intensity="medium">
+                    <Card className="overflow-hidden shadow-xl border-0 hover:shadow-2xl transition-all duration-700 bg-white/95 backdrop-blur-sm h-full transform-gpu">
+                      {/* Project Image */}
+                      <div className="relative overflow-hidden group">
+                        <Image
+                          src={work.image}
+                          alt={work.title}
+                          width={600}
+                          height={300}
+                          className="w-full h-48 sm:h-56 md:h-64 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                        <div className="absolute top-4 right-4">
+                          <Badge className="bg-blue-600 text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                            {work.category}
+                          </Badge>
                         </div>
-                      </div>
-                      <p className="text-gray-600 leading-relaxed">
-                        {work.description}
-                      </p>
-                    </CardHeader>
-
-                    <CardContent className="space-y-6">
-                      {/* Results Grid */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="text-center p-3 bg-green-50 rounded-lg border border-green-100">
-                          <div className="flex items-center justify-center mb-1">
-                            <Eye className="w-4 h-4 text-green-600 mr-1" />
-                          </div>
-                          <div className="text-lg font-bold text-green-600">{work.results.monthlyVisits}</div>
-                          <div className="text-xs text-gray-600">زيارة شهرية</div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                          <Button asChild size="sm" className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg">
+                            <Link href={work.websiteUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              زيارة الموقع
+                            </Link>
+                          </Button>
                         </div>
-                        <div className="text-center p-3 bg-blue-50 rounded-lg border border-blue-100">
-                          <div className="flex items-center justify-center mb-1">
-                            <TrendingUp className="w-4 h-4 text-blue-600 mr-1" />
-                          </div>
-                          <div className="text-lg font-bold text-blue-600">{work.results.organicGrowth}</div>
-                          <div className="text-xs text-gray-600">نمو عضوي</div>
-                        </div>
-                        <div className="text-center p-3 bg-purple-50 rounded-lg border border-purple-100">
-                          <div className="flex items-center justify-center mb-1">
-                            <Target className="w-4 h-4 text-purple-600 mr-1" />
-                          </div>
-                          <div className="text-lg font-bold text-purple-600">{work.results.keywordRanking}</div>
-                          <div className="text-xs text-gray-600">كلمة مفتاحية</div>
-                        </div>
-                        <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100">
-                          <div className="flex items-center justify-center mb-1">
-                            <MousePointer className="w-4 h-4 text-orange-600 mr-1" />
-                          </div>
-                          <div className="text-lg font-bold text-orange-600">{work.results.conversionRate}</div>
-                          <div className="text-xs text-gray-600">معدل التحويل</div>
-                        </div>
+                        
+                        {/* Shimmer effect */}
+                        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
                       </div>
 
-                      {/* Achievements */}
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
-                          <Award className="w-4 h-4 text-yellow-500 mr-2" />
-                          الإنجازات الرئيسية
-                        </h4>
-                        <ul className="space-y-2">
-                          {work.achievements.map((achievement, idx) => (
-                            <li key={idx} className="flex items-start text-sm text-gray-600">
-                              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
-                              {achievement}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <CardHeader className="pb-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                            {work.title}
+                          </CardTitle>
+                          <div className="flex items-center text-sm text-gray-500">
+                            <Calendar className="w-4 h-4 mr-1" />
+                            {work.duration}
+                          </div>
+                        </div>
+                        <p className="text-gray-600 leading-relaxed">
+                          {work.description}
+                        </p>
+                      </CardHeader>
 
-                      {/* Website Link */}
-                      <div className="pt-4 border-t border-gray-100">
-                        <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-                          <Link href={work.websiteUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            زيارة الموقع ومشاهدة النتائج
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </InteractiveCard>
-              </AnimatedContainer>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                      <CardContent className="space-y-6">
+                        {/* Results Grid */}
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="text-center p-3 bg-green-50 rounded-lg border border-green-100 hover:bg-green-100 transition-colors duration-300">
+                            <div className="flex items-center justify-center mb-1">
+                              <Eye className="w-4 h-4 text-green-600 mr-1" />
+                            </div>
+                            <div className="text-lg font-bold text-green-600">{work.results.monthlyVisits}</div>
+                            <div className="text-xs text-gray-600">زيارة شهرية</div>
+                          </div>
+                          <div className="text-center p-3 bg-blue-50 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors duration-300">
+                            <div className="flex items-center justify-center mb-1">
+                              <TrendingUp className="w-4 h-4 text-blue-600 mr-1" />
+                            </div>
+                            <div className="text-lg font-bold text-blue-600">{work.results.organicGrowth}</div>
+                            <div className="text-xs text-gray-600">نمو عضوي</div>
+                          </div>
+                          <div className="text-center p-3 bg-purple-50 rounded-lg border border-purple-100 hover:bg-purple-100 transition-colors duration-300">
+                            <div className="flex items-center justify-center mb-1">
+                              <Target className="w-4 h-4 text-purple-600 mr-1" />
+                            </div>
+                            <div className="text-lg font-bold text-purple-600">{work.results.keywordRanking}</div>
+                            <div className="text-xs text-gray-600">كلمة مفتاحية</div>
+                          </div>
+                          <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100 hover:bg-orange-100 transition-colors duration-300">
+                            <div className="flex items-center justify-center mb-1">
+                              <MousePointer className="w-4 h-4 text-orange-600 mr-1" />
+                            </div>
+                            <div className="text-lg font-bold text-orange-600">{work.results.conversionRate}</div>
+                            <div className="text-xs text-gray-600">معدل التحويل</div>
+                          </div>
+                        </div>
+
+                        {/* Achievements */}
+                        <div>
+                          <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                            <Award className="w-4 h-4 text-yellow-500 mr-2" />
+                            الإنجازات الرئيسية
+                          </h4>
+                          <ul className="space-y-2">
+                            {work.achievements.map((achievement, idx) => (
+                              <li key={idx} className="flex items-start text-sm text-gray-600">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-2 flex-shrink-0"></div>
+                                {achievement}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Website Link */}
+                        <div className="pt-4 border-t border-gray-100">
+                          <Button asChild className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                            <Link href={work.websiteUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              زيارة الموقع ومشاهدة النتائج
+                            </Link>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </InteractiveCard>
+                </AnimatedContainer>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Pagination */}
+          <div className="seo-works-pagination flex justify-center mt-8"></div>
+        </div>
 
         {/* Call to Action */}
         <AnimatedContainer animation="fade-in-up" delay={800} className="text-center mt-16">
@@ -289,6 +302,33 @@ export function SEOWorksSection() {
           </div>
         </AnimatedContainer>
       </div>
+
+      <style jsx global>{`
+        .seo-works-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .seo-works-swiper .swiper-pagination-bullet-active {
+          background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+          transform: scale(1.3);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        
+        .seo-works-swiper .swiper-slide {
+          height: auto;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .seo-works-swiper .swiper-wrapper {
+          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+      `}</style>
     </section>
   )
 }

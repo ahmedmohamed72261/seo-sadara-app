@@ -7,10 +7,10 @@ import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { TrendingUp, Award } from "lucide-react"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay, EffectFade } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-fade'
 
 const statsData = [
   {
@@ -94,70 +94,83 @@ export function ResultsSection() {
                 
                 <CardContent className="p-6 md:p-8 lg:p-12">
                   <div className="space-y-10 lg:space-y-12">
-                    {/* Swiper for Search Console Images */}
-                    <Swiper
-                      modules={[Navigation, Pagination, Autoplay]}
-                      spaceBetween={30}
-                      slidesPerView={1}
-                      navigation
-                      pagination={{ clickable: true }}
-                      autoplay={{
-                        delay: 4000,
-                        disableOnInteraction: false,
-                      }}
-                      breakpoints={{
-                        480: {
-                          slidesPerView: 1,
-                          spaceBetween: 15,
-                        },
-                        640: {
-                          slidesPerView: 1,
-                          spaceBetween: 20,
-                        },
-                        768: {
-                          slidesPerView: 2,
-                          spaceBetween: 25,
-                        },
-                        1024: {
-                          slidesPerView: 2,
-                          spaceBetween: 30,
-                        },
-                      }}
-                      className="results-swiper"
-                    >
-                      {[1, 2, 3, 4].map((num, index) => (
-                        <SwiperSlide key={num}>
-                          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group-hover:border-blue-300 group-hover:shadow-2xl transition-all duration-500">
-                            <div className="aspect-[16/10] w-full">
-                              <Image
-                                src={`/search${num}.jpg`}
-                                width={600}
-                                height={375}
-                                alt={`تقرير Google Search Console ${num} - نمو المبيعات والزيارات العضوية للمتاجر الإلكترونية`}
-                                className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-110"
-                                priority={index < 2}
-                              />
+                    {/* Enhanced Swiper for Search Console Images */}
+                    <div className="relative">
+                      <Swiper
+                        modules={[Pagination, Autoplay, EffectFade]}
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        pagination={{ 
+                          clickable: true,
+                          dynamicBullets: true,
+                          el: '.results-pagination'
+                        }}
+                        autoplay={{
+                          delay: 3500,
+                          disableOnInteraction: false,
+                          pauseOnMouseEnter: false,
+                        }}
+                        loop={true}
+                        speed={1200}
+                        effect="fade"
+                        fadeEffect={{
+                          crossFade: true
+                        }}
+                        breakpoints={{
+                          768: {
+                            slidesPerView: 1,
+                            effect: "slide",
+                            speed: 1000,
+                          },
+                          1024: {
+                            slidesPerView: 2,
+                            spaceBetween: 30,
+                            effect: "slide",
+                            speed: 1000,
+                          },
+                        }}
+                        className="results-swiper !pb-16"
+                      >
+                        {[1, 2, 3, 4].map((num, index) => (
+                          <SwiperSlide key={num} className="!h-auto">
+                            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200 group hover:border-blue-300 hover:shadow-2xl transition-all duration-700 transform-gpu">
+                              <div className="aspect-[16/10] w-full">
+                                <Image
+                                  src={`/search${num}.jpg`}
+                                  width={600}
+                                  height={375}
+                                  alt={`تقرير Google Search Console ${num} - نمو المبيعات والزيارات العضوية للمتاجر الإلكترونية`}
+                                  className="w-full h-full object-cover rounded-2xl transition-all duration-700 group-hover:scale-[1.02] group-hover:brightness-110"
+                                  priority={index < 2}
+                                />
+                              </div>
+                              
+                              {/* Overlay with gradient */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                              
+                              {/* Growth badge with animation */}
+                              <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2.5 rounded-full text-sm md:text-base font-bold shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
+                                <span className="flex items-center gap-2">
+                                  <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
+                                  +{250 + (num * 75)}%
+                                </span>
+                              </div>
+                              
+                              {/* Store label with slide animation */}
+                              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-xl text-sm md:text-base font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                                متجر إلكتروني #{num}
+                              </div>
+
+                              {/* Shimmer effect */}
+                              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
                             </div>
-                            
-                            {/* Overlay with gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                            
-                            {/* Growth badge */}
-                            <div className="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2.5 rounded-full text-sm md:text-base font-bold shadow-lg group-hover:shadow-xl transition-all duration-300">
-                              <span className="flex items-center gap-2">
-                                <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></span>
-                                +{250 + (num * 75)}%
-                              </span>
-                            </div>
-                            
-                            {/* Store label */}
-                            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm text-gray-800 px-4 py-2 rounded-xl text-sm md:text-base font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              متجر إلكتروني #{num}
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+
+                      {/* Custom Pagination */}
+                      <div className="results-pagination flex justify-center mt-8"></div>
+                    </div>
                     
                     {/* Enhanced Performance indicators */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 xl:gap-8">
@@ -196,6 +209,38 @@ export function ResultsSection() {
           </div>
         </AnimatedContainer>
       </div>
+
+      <style jsx global>{`
+        .results-swiper .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 1;
+          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .results-swiper .swiper-pagination-bullet-active {
+          background: linear-gradient(45deg, #10b981, #3b82f6);
+          transform: scale(1.3);
+          border-color: rgba(255, 255, 255, 0.8);
+          box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+        
+        .results-swiper .swiper-slide {
+          height: auto;
+          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .results-swiper .swiper-wrapper {
+          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Enhanced shadow for professional look */
+        .shadow-3xl {
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+      `}</style>
     </section>
   )
 }

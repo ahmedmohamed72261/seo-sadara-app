@@ -5,7 +5,7 @@ export { ResultsSection } from './ResultsSection'
 export { SEOWorksSection } from './SEOWorksSection'
 export { CustomSEOPackageSection } from './CustomSEOPackageSection'
 export { PortfolioSection } from './PortfolioSection'
-
+export { BrandsSection } from './BrandsSection'
 export { BlogSection } from './BlogSection'
 export { ContactSection } from './ContactSection'
 export { Footer } from './Footer'
