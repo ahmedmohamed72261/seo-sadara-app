@@ -124,7 +124,7 @@ export function Footer() {
             </div>
             
             {/* Quick Links */}
-            <div className="text-center md:text-right">
+            <div className="text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">روابط سريعة</h3>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
@@ -140,7 +140,7 @@ export function Footer() {
             </div>
             
             {/* Contact Info */}
-            <div className="text-center md:text-right">
+            <div className="text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">تواصل معنا</h3>
               <ul className="space-y-4">
                 {contactInfo.map((info, index) => (
@@ -149,7 +149,7 @@ export function Footer() {
                       {info.href ? (
                         <Link 
                           href={info.href} 
-                          className={`flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group justify-center md:justify-start ${
+                          className={`flex  gap-3 text-gray-300 hover:text-white transition-all duration-300 group justify-start ${
                             info.whatsapp ? 'hover:text-green-400' : ''
                           }`}
                           target={info.whatsapp ? '_blank' : undefined}
@@ -161,7 +161,7 @@ export function Footer() {
                           <span className="group-hover:translate-x-1 transition-transform duration-300">{info.text}</span>
                         </Link>
                       ) : (
-                        <div className="flex items-center gap-3 text-gray-300 justify-center md:justify-start">
+                        <div className="flex gap-3 text-gray-300 justify-start">
                           <info.icon className="h-5 w-5 text-blue-500 flex-shrink-0" />
                           <span>{info.text}</span>
                         </div>
@@ -173,9 +173,9 @@ export function Footer() {
             </div>
             
             {/* Social Links */}
-            <div className="text-center md:text-right">
+            <div className="text-right">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">تابعنا</h3>
-              <div className="flex flex-col gap-4 items-center md:items-start">
+              <div className="flex flex-col gap-4 items-start">
                 {socialLinks.map((social, index) => (
                   <AnimatedContainer key={index} animation="scale-in" delay={index * 150}>
                     <InteractiveCard variant="scale" intensity="strong">

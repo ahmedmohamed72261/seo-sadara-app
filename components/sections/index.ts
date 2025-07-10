@@ -1,6 +1,7 @@
 export { Header } from './Header'
 export { HeroSection } from './HeroSection'
 export { FeaturesSection } from './FeaturesSection'
+export { KeywordGeneratorSection } from './KeywordGeneratorSection'
 export { ResultsSection } from './ResultsSection'
 export { SEOWorksSection } from './SEOWorksSection'
 export { CustomSEOPackageSection } from './CustomSEOPackageSection'

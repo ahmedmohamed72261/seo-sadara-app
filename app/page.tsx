@@ -5,6 +5,7 @@ import {
   Header,
   HeroSection,
   FeaturesSection,
+  KeywordGeneratorSection,
   ResultsSection,
   SEOWorksSection,
   CustomSEOPackageSection,
@@ -70,6 +71,7 @@ export default function SaudiSeoLandingPage() {
       <main className="min-h-screen">
         <HeroSection />
         <FeaturesSection />
+        <KeywordGeneratorSection />
         <ResultsSection />
         <SEOWorksSection />
         <CustomSEOPackageSection />
