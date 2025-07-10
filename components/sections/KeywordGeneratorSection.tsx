@@ -23,7 +23,22 @@ const mockKeywords: Keyword[] = [
   { text: 'تجربة', count: 5727 },
   { text: 'هدايا للمناسبات الخاصة', count: 4536 },
   { text: 'اختيارات', count: 1223 },
-  { text: 'هدايا للرجال', count: 6651 }
+  { text: 'هدايا للرجال', count: 6651 },
+  { text: 'تسوق إلكتروني', count: 4321 },
+  { text: 'خدمات مميزة', count: 3456 },
+  { text: 'عروض حصرية', count: 7890 },
+  { text: 'منتجات عالية الجودة', count: 2345 },
+  { text: 'خدمة العملاء', count: 5678 }
+]
+
+// Group keywords into rows of 3
+const keywordRows = [
+  mockKeywords.slice(0, 3),
+  mockKeywords.slice(3, 6),
+  mockKeywords.slice(6, 9),
+  mockKeywords.slice(9, 12),
+  mockKeywords.slice(12, 15),
+  mockKeywords.slice(15, 18)
 ]
 
 export function KeywordGeneratorSection() {
@@ -98,35 +113,50 @@ export function KeywordGeneratorSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="max-w-6xl mx-auto"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {keywords.map((keyword, index) => (
+              <div className="flex flex-col gap-4">
+                {keywordRows.map((row, rowIndex) => (
                   <motion.div
-                    key={keyword.text}
-                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    key={rowIndex}
+                    initial={{ opacity: 0, y: -50, scale: 0.8 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{ 
-                      duration: 0.5, 
-                      delay: index * 0.1,
+                      duration: 0.6, 
+                      delay: rowIndex * 0.15,
                       type: "spring",
-                      stiffness: 100
+                      stiffness: 120,
+                      damping: 12
                     }}
-                    whileHover={{ 
-                      scale: 1.05,
-                      boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
-                    }}
-                    className="bg-gradient-to-r from-gray-800/50 to-gray-700/50 backdrop-blur-sm border border-gray-600/30 rounded-xl p-4 hover:border-blue-400/50 transition-all duration-300 cursor-pointer group"
+                    className="flex gap-3 justify-center flex-wrap"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-white font-medium group-hover:text-blue-300 transition-colors">
-                        #{keyword.text}
-                      </span>
-                      <motion.span 
-                        className="text-green-400 font-bold text-sm bg-green-400/10 px-2 py-1 rounded-full"
-                        whileHover={{ scale: 1.1 }}
+                    {row.map((keyword, keywordIndex) => (
+                      <motion.div
+                        key={keyword.text}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ 
+                          duration: 0.4, 
+                          delay: (rowIndex * 0.15) + (keywordIndex * 0.05),
+                          type: "spring",
+                          stiffness: 150
+                        }}
+                        whileHover={{ 
+                          scale: 1.05,
+                          boxShadow: "0 8px 25px rgba(59, 130, 246, 0.4)",
+                          y: -2
+                        }}
+                        className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 backdrop-blur-sm border border-gray-600/40 rounded-xl px-4 py-3 hover:border-blue-400/60 transition-all duration-300 cursor-pointer group flex items-center gap-2"
                       >
-                        ↑ {keyword.count.toLocaleString()}
-                      </motion.span>
-                    </div>
+                        <span className="text-white font-medium group-hover:text-blue-300 transition-colors">
+                          #{keyword.text}
+                        </span>
+                        <motion.span 
+                          className="text-green-400 font-bold text-sm bg-green-400/15 px-2 py-1 rounded-full"
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          ↑ {keyword.count.toLocaleString()}
+                        </motion.span>
+                      </motion.div>
+                    ))}
                   </motion.div>
                 ))}
               </div>
