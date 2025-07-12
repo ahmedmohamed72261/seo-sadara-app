@@ -13,7 +13,8 @@ import {
   BrandsSection,
   BlogSection,
   ContactSection,
-  Footer
+  Footer,
+  NewspapersSection
 } from '@/components/sections'
 
 interface Blog {
@@ -72,8 +73,9 @@ export default function SaudiSeoLandingPage() {
         <HeroSection />
         <FeaturesSection />
         <KeywordGeneratorSection />
-        <ResultsSection />
+        <NewspapersSection />
         <SEOWorksSection />
+        <ResultsSection />
         <CustomSEOPackageSection />
         <PortfolioSection />
         <BlogSection posts={blogPosts} />

@@ -119,7 +119,7 @@ export function SEOWorksSection() {
           <div className="space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium shadow-lg border border-blue-200">
               <Award className="w-4 h-4 mr-2" />
-              أعمالنا ونتا��جنا
+              أعمالنا ونتائجنا
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
               <GradientText variant="primary">مشاريع SEO ناجحة</GradientText>{" "}
