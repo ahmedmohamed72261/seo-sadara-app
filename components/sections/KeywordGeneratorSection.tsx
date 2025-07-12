@@ -78,14 +78,14 @@ export function KeywordGeneratorSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Generate Keywords
-          </h2>
+          <h3 className="text-2xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            🔍 استهدف جمهورك بدقة وتصدر نتائج محركات البحث  
+          </h3>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            AI tailored for digital advertising
+            ذكاء اصطناعي مصمم خصيصًا للإعلانات الرقمية
           </p>
           <p className="text-lg text-gray-400 mt-2">
-            With one click, easily create titles, keywords, and descriptions.
+            بنقرة واحدة فقط، أنشئ العناوين والكلمات المفتاحية والوصف الإعلاني بكل سهولة.
           </p>
         </motion.div>
 
