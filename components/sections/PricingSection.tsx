@@ -81,31 +81,6 @@ const pricingPlans = [
 
 // Custom Package Calculator Component
 function CustomPackageCalculator() {
-  const [articles, setArticles] = useState(5)
-  const [backlinks, setBacklinks] = useState(10)
-  const [selectedNewspapers, setSelectedNewspapers] = useState<string[]>([])
-  
-  const articlePrice = 80 // ر.س per article
-  const backlinkPrice = 50 // ر.س per backlink
-  
-  const calculateTotal = () => {
-    const articlesTotal = articles * articlePrice
-    const backlinksTotal = backlinks * backlinkPrice
-    const newspapersTotal = selectedNewspapers.reduce((total, name) => {
-      const newspaper = newspaperLogos.find(n => n.name === name)
-      return total + (newspaper?.price || 0)
-    }, 0)
-    return articlesTotal + backlinksTotal + newspapersTotal
-  }
-  
-  const toggleNewspaper = (name: string) => {
-    setSelectedNewspapers(prev => 
-      prev.includes(name) 
-        ? prev.filter(n => n !== name)
-        : [...prev, name]
-    )
-  }
-  
   return (
     <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200">
       <CardHeader>
@@ -114,134 +89,28 @@ function CustomPackageCalculator() {
           حاسبة الباقة المخصصة
         </CardTitle>
         <CardDescription>
-          اختر عدد المقالات والباك لينكس والصحف لحساب التكلفة الإجمالية
+          تواصل معنا للحصول على عرض سعر مخصص لاحتياجاتك
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Articles Counter */}
-        <div className="space-y-3">
-          <Label className="flex items-center gap-2 text-lg font-semibold">
-            <Newspaper className="h-5 w-5 text-blue-600" />
-            عدد المقالات ({articlePrice} ر.س للمقال)
-          </Label>
-          <div className="flex items-center gap-4">
+        {/* Contact Information */}
+        <div className="bg-white p-6 rounded-lg border-2 border-blue-200 text-center">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-gray-800">احصل على عرض سعر مخصص</h3>
+            <p className="text-gray-600">
+              تواصل معنا عبر واتساب للحصول على استشارة مجانية وعرض سعر يناسب احتياجاتك
+            </p>
             <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => setArticles(Math.max(1, articles - 1))}
-              className="h-10 w-10 p-0"
+              className="w-full bg-green-500 hover:bg-green-600 text-white py-3 text-lg font-semibold"
+              onClick={() => {
+                const message = "مرحباً! أريد الحصول على عرض سعر مخصص لخدمات SEO"
+                const whatsappUrl = `https://wa.me/966555555555?text=${encodeURIComponent(message)}`
+                window.open(whatsappUrl, '_blank')
+              }}
             >
-              <Minus className="h-4 w-4" />
+              تواصل عبر واتساب
             </Button>
-            <Input 
-              type="number" 
-              value={articles} 
-              onChange={(e) => setArticles(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-20 text-center"
-              min="1"
-            />
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => setArticles(articles + 1)}
-              className="h-10 w-10 p-0"
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-            <span className="text-sm text-gray-600">= {articles * articlePrice} ر.س</span>
           </div>
-        </div>
-        
-        {/* Backlinks Counter */}
-        <div className="space-y-3">
-          <Label className="flex items-center gap-2 text-lg font-semibold">
-            <Link className="h-5 w-5 text-green-600" />
-            عدد الباك لينكس ({backlinkPrice} ر.س للرابط)
-          </Label>
-          <div className="flex items-center gap-4">
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => setBacklinks(Math.max(1, backlinks - 1))}
-              className="h-10 w-10 p-0"
-            >
-              <Minus className="h-4 w-4" />
-            </Button>
-            <Input 
-              type="number" 
-              value={backlinks} 
-              onChange={(e) => setBacklinks(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-20 text-center"
-              min="1"
-            />
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={() => setBacklinks(backlinks + 1)}
-              className="h-10 w-10 p-0"
-            >
-              <Plus className="h-4 w-4" />
-            </Button>
-            <span className="text-sm text-gray-600">= {backlinks * backlinkPrice} ر.س</span>
-          </div>
-        </div>
-        
-        {/* Newspapers Selection */}
-        <div className="space-y-3">
-          <Label className="text-lg font-semibold">اختر الصحف والمجلات</Label>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {newspaperLogos.map((newspaper) => (
-              <div 
-                key={newspaper.name}
-                onClick={() => toggleNewspaper(newspaper.name)}
-                className={`p-3 border-2 rounded-lg cursor-pointer transition-all hover:shadow-md ${
-                  selectedNewspapers.includes(newspaper.name)
-                    ? 'border-blue-500 bg-blue-50'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                <div className="text-center space-y-2">
-                  <div className="h-8 w-8 mx-auto bg-gray-100 rounded flex items-center justify-center">
-                    <Newspaper className="h-4 w-4 text-gray-600" />
-                  </div>
-                  <div className="text-xs font-medium">{newspaper.name}</div>
-                  <div className="text-xs text-gray-500">{newspaper.country}</div>
-                  <div className="text-xs font-semibold text-blue-600">{newspaper.price} ر.س</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Total Calculation */}
-        <div className="bg-white p-4 rounded-lg border-2 border-blue-200">
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm">
-              <span>المقالات ({articles} × {articlePrice})</span>
-              <span>{articles * articlePrice} ر.س</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span>الباك لينكس ({backlinks} × {backlinkPrice})</span>
-              <span>{backlinks * backlinkPrice} ر.س</span>
-            </div>
-            {selectedNewspapers.length > 0 && (
-              <div className="flex justify-between text-sm">
-                <span>الصحف المختارة ({selectedNewspapers.length})</span>
-                <span>{selectedNewspapers.reduce((total, name) => {
-                  const newspaper = newspaperLogos.find(n => n.name === name)
-                  return total + (newspaper?.price || 0)
-                }, 0)} ر.س</span>
-              </div>
-            )}
-            <hr className="my-2" />
-            <div className="flex justify-between text-lg font-bold text-blue-600">
-              <span>الإجمالي</span>
-              <span>{calculateTotal().toLocaleString()} ر.س</span>
-            </div>
-          </div>
-          <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700">
-            طلب الباقة المخصصة
-          </Button>
         </div>
       </CardContent>
     </Card>

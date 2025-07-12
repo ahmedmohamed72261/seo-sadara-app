@@ -126,7 +126,7 @@ export function KeywordGeneratorSection() {
                       stiffness: 120,
                       damping: 12
                     }}
-                    className="flex gap-3 justify-center flex-wrap"
+                    className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 justify-items-center"
                   >
                     {row.map((keyword, keywordIndex) => (
                       <motion.div
@@ -144,17 +144,19 @@ export function KeywordGeneratorSection() {
                           boxShadow: "0 8px 25px rgba(59, 130, 246, 0.4)",
                           y: -2
                         }}
-                        className="bg-gradient-to-r from-gray-800/60 to-gray-700/60 backdrop-blur-sm border border-gray-600/40 rounded-xl px-4 py-3 hover:border-blue-400/60 transition-all duration-300 cursor-pointer group flex items-center gap-2"
+                        className="w-full bg-gradient-to-r from-gray-800/60 to-gray-700/60 backdrop-blur-sm border border-gray-600/40 rounded-lg sm:rounded-xl px-2 sm:px-3 md:px-4 py-2 sm:py-3 hover:border-blue-400/60 transition-all duration-300 cursor-pointer group"
                       >
-                        <span className="text-white font-medium group-hover:text-blue-300 transition-colors">
-                          #{keyword.text}
-                        </span>
-                        <motion.span 
-                          className="text-green-400 font-bold text-sm bg-green-400/15 px-2 py-1 rounded-full"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          ↑ {keyword.count.toLocaleString()}
-                        </motion.span>
+                        <div className="flex flex-col items-center text-center space-y-1 sm:space-y-2">
+                          <span className="text-white font-medium group-hover:text-blue-300 transition-colors text-xs sm:text-sm md:text-base leading-tight">
+                            #{keyword.text}
+                          </span>
+                          <motion.span 
+                            className="text-green-400 font-bold text-xs sm:text-sm bg-green-400/15 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full"
+                            whileHover={{ scale: 1.1 }}
+                          >
+                            ↑ {keyword.count.toLocaleString()}
+                          </motion.span>
+                        </div>
                       </motion.div>
                     ))}
                   </motion.div>

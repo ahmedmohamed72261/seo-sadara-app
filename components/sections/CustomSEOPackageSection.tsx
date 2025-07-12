@@ -1,30 +1,21 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Slider } from "@/components/ui/slider"
 import { Badge } from "@/components/ui/badge"
 import { AnimatedContainer } from "@/components/ui/animated-container"
-import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   MessageCircle,
   FileText,
   Link,
   Newspaper,
   Calculator,
-  Globe,
   CheckCircle,
-  Sparkles,
-  Check
+  Sparkles
 } from "lucide-react"
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
 
 interface CurrencyInfo {
   code: string
@@ -43,59 +34,6 @@ const currencies: Record<string, CurrencyInfo> = {
   JO: { code: 'JOD', symbol: 'د.أ', rate: 0.71 },
   US: { code: 'USD', symbol: '$', rate: 0.27 }
 }
-
-const pricingPlans = [
-  {
-    name: "الأساسية",
-    description: "للشركات الناشئة والصغيرة",
-    price: "1,500",
-    currency: "ر.س/شهرياً",
-    features: [
-      "تحليل 10 كلمات مفتاحية",
-      "فحص فني أساسي للموقع",
-      "تقرير أداء شهري",
-      "دعم فني عبر البريد الإلكتروني"
-    ],
-    buttonText: "اختر الباقة",
-    buttonVariant: "outline" as const,
-    popular: false,
-    delay: 200
-  },
-  {
-    name: "الاحترافية",
-    description: "للشركات المتوسطة والنامية",
-    price: "3,500",
-    currency: "ر.س/شهرياً",
-    features: [
-      "تحليل 50 كلمة مفتاحية",
-      "فحص فني شامل للموقع",
-      "بناء 5 روابط خارجية شهرياً",
-      "تقارير أسبوعية مفصلة",
-      "دعم فني على مدار الساعة"
-    ],
-    buttonText: "اختر الباقة",
-    buttonVariant: "default" as const,
-    popular: true,
-    delay: 400
-  },
-  {
-    name: "النخبة",
-    description: "للشركات الكبيرة والمتاجر الضخمة",
-    price: "تواصل معنا",
-    currency: "",
-    features: [
-      "استراتيجية مخصصة بالكامل",
-      "تحسين مستمر للموقع",
-      "بناء روابط خارجية مكثف",
-      "مدير حساب مخصص",
-      "تقارير يومية وتحليلات متقدمة"
-    ],
-    buttonText: "تواصل مع المبيعات",
-    buttonVariant: "outline" as const,
-    popular: false,
-    delay: 600
-  }
-]
 
 const packageFeatures = [
   {
@@ -229,144 +167,14 @@ export function CustomSEOPackageSection() {
               <span className="block mt-2 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">حسب احتياجاتك</span>
             </h2>
             <p className="max-w-4xl text-lg md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
-              اختر عدد المقالات والباك لينكس والاشتراكات التي تحتاجها واحصل على عرض سعر فوري
+              اختر عدد المقالات وال��اك لينكس والاشتراكات التي تحتاجها واحصل على عرض سعر فوري
             </p>
           </div>
         </AnimatedContainer>
 
-        {/* Standard Pricing Plans with Slider */}
-        <div className="relative mb-16">
-          <Swiper
-            modules={[Pagination, Autoplay, EffectCoverflow]}
-            spaceBetween={30}
-            slidesPerView={1}
-            pagination={{ 
-              clickable: true,
-              dynamicBullets: true,
-              el: '.custom-pricing-pagination'
-            }}
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: false,
-            }}
-            loop={true}
-            speed={1100}
-            effect="coverflow"
-            coverflowEffect={{
-              rotate: 15,
-              stretch: 0,
-              depth: 150,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            centeredSlides={true}
-            breakpoints={{
-              640: {
-                slidesPerView: 1.5,
-                spaceBetween: 25,
-                effect: "coverflow",
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-                effect: "coverflow",
-              },
-              1024: {
-                slidesPerView: 2.5,
-                spaceBetween: 35,
-                effect: "coverflow",
-              },
-              1280: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-                effect: "coverflow",
-              },
-            }}
-            className="custom-pricing-swiper !pb-16 !overflow-visible"
-          >
-            {pricingPlans.map((plan, index) => (
-              <SwiperSlide key={plan.name} className="!h-auto">
-                <AnimatedContainer
-                  animation="fade-in-up"
-                  delay={plan.delay}
-                >
-                  <InteractiveCard variant="lift" intensity="strong">
-                    <Card className={`h-full bg-white shadow-2xl border-0 hover:shadow-3xl transition-all duration-700 overflow-hidden group relative transform-gpu ${
-                      plan.popular ? 'border-blue-500 border-2' : ''
-                    }`}>
-                      {plan.popular && (
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                          <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                            الأكثر شعبية
-                          </span>
-                        </div>
-                      )}
-                      
-                      <CardContent className={`p-8 text-center space-y-6 ${plan.popular ? 'pt-12' : ''}`}>
-                        <div className="space-y-4">
-                          <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">{plan.name}</h3>
-                          <p className="text-gray-600">{plan.description}</p>
-                          <div className="space-y-2">
-                            <span className="text-4xl font-bold text-blue-600">{plan.price}</span>
-                            {plan.currency && (
-                              <div className="text-gray-600 text-lg">{plan.currency}</div>
-                            )}
-                          </div>
-                        </div>
-                        
-                        <ul className="space-y-3 text-right">
-                          {plan.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-center">
-                              <Check className="h-5 w-5 text-green-500 ml-3 flex-shrink-0" />
-                              <span className="text-gray-700">{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        
-                        <Button 
-                          className={`w-full transition-all duration-300 ${
-                            plan.buttonVariant === 'default' 
-                              ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl' 
-                              : 'border-blue-600 text-blue-600 hover:bg-blue-50'
-                          }`}
-                          variant={plan.buttonVariant}
-                          onClick={() => {
-                            const message = `مرحب��ً، أريد الاستفسار عن باقة ${plan.name}`
-                            const whatsappUrl = `https://wa.me/966555555555?text=${encodeURIComponent(message)}`
-                            window.open(whatsappUrl, '_blank')
-                          }}
-                        >
-                          {plan.buttonText}
-                        </Button>
-                      </CardContent>
-
-                      {/* Shimmer effect */}
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
-                    </Card>
-                  </InteractiveCard>
-                </AnimatedContainer>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
-          {/* Custom Pagination */}
-          <div className="custom-pricing-pagination flex justify-center mt-8"></div>
-        </div>
-
-        {/* Currency Display */}
-        <AnimatedContainer animation="fade-in-up" delay={200}>
-          <div className="flex justify-center mb-8">
-            <Badge variant="outline" className="px-4 py-2 text-lg">
-              <Globe className="w-4 h-4 mr-2" />
-              العملة: {currency.code} ({currency.symbol})
-            </Badge>
-          </div>
-        </AnimatedContainer>
-
-        {/* Package Customization */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Left Side - Controls */}
+        {/* Package Customization - Only Two Main Sections */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left Side - خصص باقتك */}
           <AnimatedContainer animation="fade-in-left" delay={300}>
             <Card className="bg-white/80 backdrop-blur-sm shadow-2xl border-0">
               <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 p-8">
@@ -445,7 +253,7 @@ export function CustomSEOPackageSection() {
             </Card>
           </AnimatedContainer>
 
-          {/* Right Side - Summary */}
+          {/* Right Side - ملخص الباقة */}
           <AnimatedContainer animation="fade-in-right" delay={400}>
             <Card className="bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-2xl border-0">
               <CardHeader className="p-8">
@@ -505,73 +313,7 @@ export function CustomSEOPackageSection() {
             </Card>
           </AnimatedContainer>
         </div>
-
-        {/* Features Grid */}
-        <AnimatedContainer animation="fade-in-up" delay={500}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packageFeatures.map((feature, index) => {
-              const Icon = feature.icon
-              return (
-                <InteractiveCard key={index} variant="lift" intensity="medium">
-                  <Card className="bg-white shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
-                    <CardContent className="p-6 text-center space-y-4">
-                      <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center">
-                        <Icon className="h-8 w-8 text-blue-600" />
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900">{feature.title}</h3>
-                      <p className="text-gray-600">{feature.description}</p>
-                      <div className="text-lg font-semibold text-blue-600">
-                        {Math.round(feature.basePrice * currency.rate)} {currency.symbol} / {feature.unit}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </InteractiveCard>
-              )
-            })}
-          </div>
-        </AnimatedContainer>
       </div>
-
-      <style jsx global>{`
-        .custom-pricing-swiper .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
-          background: rgba(0, 0, 0, 0.3);
-          opacity: 1;
-          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        .custom-pricing-swiper .swiper-pagination-bullet-active {
-          background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-          transform: scale(1.3);
-          border-color: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-        
-        .custom-pricing-swiper .swiper-slide {
-          height: auto;
-          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .custom-pricing-swiper .swiper-slide-active {
-          transform: scale(1.05);
-        }
-        
-        .custom-pricing-swiper .swiper-slide:not(.swiper-slide-active) {
-          opacity: 0.8;
-          transform: scale(0.95);
-        }
-        
-        .custom-pricing-swiper .swiper-wrapper {
-          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .custom-pricing-swiper .swiper-slide-shadow-left,
-        .custom-pricing-swiper .swiper-slide-shadow-right {
-          background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
-        }
-      `}</style>
     </section>
   )
 }
