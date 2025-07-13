@@ -264,7 +264,7 @@ export function CustomSEOPackageSection() {
                       plan.popular ? 'border-blue-500 border-2' : ''
                     }`}>
                       {plan.popular && (
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                        <div className="absolute top-3 left-1/2 transform -translate-x-1/2 z-10">
                           <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                             الأكثر شعبية
                           </span>

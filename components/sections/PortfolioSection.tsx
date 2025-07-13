@@ -66,7 +66,7 @@ export function PortfolioSection() {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <GradientText variant="warning">نتائج ملموسة</GradientText>{" "}
-              <span className="block mt-2 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">في مختلف القطاعات</span>
+              <span className="block mt-2 bg-gradient-to-r leading-[1.4] from-gray-900 to-gray-700 bg-clip-text text-transparent">في مختلف القطاعات</span>
             </h2>
             <p className="max-w-4xl text-lg md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
               نحن نطبق خبراتنا في تحسين محركات البحث لمساعدة الشركات على النمو، بغض النظر عن مجال عملها.

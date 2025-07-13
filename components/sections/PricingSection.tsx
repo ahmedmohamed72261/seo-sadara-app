@@ -195,7 +195,7 @@ export function PricingSection() {
                           plan.popular ? 'border-blue-600 border-2 relative shadow-2xl scale-105' : ''
                         }`}>
                           {plan.popular && (
-                            <div className="absolute top-0 -translate-y-1/2 w-full flex justify-center">
+                            <div className="absolute top-14 -translate-y-1/2 w-full flex justify-center">
                               <div className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-2 text-sm font-semibold text-white shadow-lg">
                                 الأكثر شيوعاً
                               </div>

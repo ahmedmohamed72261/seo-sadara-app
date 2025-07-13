@@ -51,19 +51,8 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-green-50 rounded-full border-2 border-transparent bg-clip-padding hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-200 to-green-200 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-full"></div>
-            <Image 
-              src="/google-partner-logo.svg" 
-              alt="شريك جوجل معتمد" 
-              width={80} 
-              height={26}
-              className="object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          
           <Button asChild className="hidden lg:inline-flex bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <Link href="#contact" className="flex items-center gap-2">
+            <Link href="https://api.whatsapp.com/send/?phone=966566599744" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <span>استشارة مجانية</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -99,23 +88,13 @@ export function Header() {
                 </nav>
                 
                 <Button asChild className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full py-3 shadow-lg hover:shadow-xl transition-all duration-300 mt-4">
-                  <Link href="#contact" className="flex items-center justify-center gap-2">
+                  <Link href="https://api.whatsapp.com/send/?phone=966566599744" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                     <span>اطلب استشارة مجانية</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </Link>
                 </Button>
-                
-                <div className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-50 to-green-50 rounded-full border-2 border-transparent bg-clip-padding shadow-md mt-4">
-                  <Image 
-                    src="/google-partner-logo.svg" 
-                    alt="شريك جوجل معتمد" 
-                    width={80} 
-                    height={26}
-                    className="object-contain"
-                  />
-                </div>
               </div>
             </SheetContent>
           </Sheet>

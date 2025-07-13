@@ -36,12 +36,12 @@ const contactInfo = [
   },
   {
     icon: Phone,
-    text: "+966 11 123 4567",
-    href: "tel:+966111234567"
+    text: "+966 56 659 9744",
+    href: "tel:+966566599744"
   },
   {
     icon: MessageCircle,
-    text: "واتساب: +966 50 123 4567",
+    text: "واتساب: +966 56 659 9744",
     href: "https://api.whatsapp.com/send/?phone=966566599744",
     whatsapp: true
   }
@@ -61,7 +61,7 @@ const paymentMethods = [
   { name: "الدفع عند الاستلام", image: "/payment-icon/cod_mini.webp" },
   { name: "تابي", image: "/payment-icon/tabby_installment_mini.webp" },
   { name: "تمارا", image: "/payment-icon/tamara_installment_mini.webp" },
-  { name: "STC Pay", image: "/payment-icon/sbc.webp" }
+  // { name: "STC Pay", image: "/payment-icon/sbc.webp" }
 ]
 
 const features = [
