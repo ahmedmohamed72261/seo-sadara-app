@@ -175,7 +175,7 @@ export function CustomSEOPackageSection() {
       `يرجى التواصل معي لمناقشة التفاصيل.`
     
     const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/966123456789?text=${encodedMessage}`
+    const whatsappUrl = `https://api.whatsapp.com/send/?phone=966566599744&text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
   }
 
@@ -301,7 +301,7 @@ export function CustomSEOPackageSection() {
                           variant={plan.buttonVariant}
                           onClick={() => {
                             const message = `مرحب��ً، أريد الاستفسار عن باقة ${plan.name}`
-                            const whatsappUrl = `https://wa.me/966555555555?text=${encodeURIComponent(message)}`
+                            const whatsappUrl = `https://api.whatsapp.com/send/?phone=966566599744&text=${encodeURIComponent(message)}`
                             window.open(whatsappUrl, '_blank')
                           }}
                         >

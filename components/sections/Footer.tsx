@@ -42,7 +42,7 @@ const contactInfo = [
   {
     icon: MessageCircle,
     text: "واتساب: +966 50 123 4567",
-    href: "https://wa.me/966501234567",
+    href: "https://api.whatsapp.com/send/?phone=966566599744",
     whatsapp: true
   }
 ]
@@ -245,7 +245,7 @@ export function Footer() {
               
               <InteractiveCard variant="scale" intensity="strong">
                 <a
-                  href="https://wa.me/966501234567"
+                  href="https://api.whatsapp.com/send/?phone=966566599744"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-400 via-green-500 to-green-600 rounded-full shadow-2xl hover:shadow-green-500/60 transition-all duration-500 group overflow-hidden whatsapp-float whatsapp-glow"

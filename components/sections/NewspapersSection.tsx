@@ -15,17 +15,13 @@ const newspapers = [
   { name: 'NewsPapers', logo: '/newspapers/5.svg' },
   { name: 'NewsPapers', logo: '/newspapers/6.svg' },
   { name: 'NewsPapers', logo: '/newspapers/7.svg' },
-  { name: 'NewsPapers', logo: '/newspapers/1.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/2.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/3.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/4.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/5.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/6.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/7.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/8.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/9.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/9.jpg' },
-  { name: 'NewsPapers', logo: '/newspapers/10.jpg' }
+  { name: 'NewsPapers', logo: '/newspapers/3.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/7.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/2.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/5.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/4.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/1.svg' },
+  { name: 'NewsPapers', logo: '/newspapers/6.svg' }
 ];
 
 export const NewspapersSection = () => {

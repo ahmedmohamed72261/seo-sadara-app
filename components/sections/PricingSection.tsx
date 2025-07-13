@@ -104,7 +104,7 @@ function CustomPackageCalculator() {
               className="w-full bg-green-500 hover:bg-green-600 text-white py-3 text-lg font-semibold"
               onClick={() => {
                 const message = "مرحباً! أريد الحصول على عرض سعر مخصص لخدمات SEO"
-                const whatsappUrl = `https://wa.me/966555555555?text=${encodeURIComponent(message)}`
+                const whatsappUrl = `https://api.whatsapp.com/send/?phone=966566599744&text=${encodeURIComponent(message)}`
                 window.open(whatsappUrl, '_blank')
               }}
             >

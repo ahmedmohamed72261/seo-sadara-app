@@ -15,7 +15,15 @@ export function ContactSection() {
             <p className="mx-auto max-w-xl text-lg md:text-xl text-gray-300">
               دعنا نساعدك في تحقيق أهدافك. تواصل معنا اليوم للحصول على استشارة مجانية وخطة عمل مخصصة.
             </p>
-            <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-200 rounded-full h-12 px-8 text-base font-semibold">
+            <Button 
+              size="lg" 
+              className="bg-white text-blue-700 hover:bg-gray-200 rounded-full h-12 px-8 text-base font-semibold"
+              onClick={() => {
+                const message = "مرحباً! أريد التواصل معكم للحصول على استشارة مجانية حول خدمات SEO"
+                const whatsappUrl = `https://api.whatsapp.com/send/?phone=966566599744&text=${encodeURIComponent(message)}`
+                window.open(whatsappUrl, '_blank')
+              }}
+            >
               تواصل معنا الآن
             </Button>
           </div>
