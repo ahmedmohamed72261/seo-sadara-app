@@ -13,33 +13,43 @@ import 'swiper/css/pagination'
 const brands = [
   {
     id: 1,
-    logo: "/brands/brand1.WEBP",
+    logo: "/brands/1.svg",
     alt: "Brand 1"
   },
   {
     id: 2,
-    logo: "/brands/brand2.WEBP",
+    logo: "/brands/2.svg",
     alt: "Brand 2"
   },
   {
     id: 3,
-    logo: "/brands/brand3.WEBP",
+    logo: "/brands/3.svg",
     alt: "Brand 3"
   },
   {
     id: 4,
-    logo: "/brands/brand4.WEBP",
+    logo: "/brands/4.svg",
     alt: "Brand 4"
   },
   {
     id: 5,
-    logo: "/brands/brand5.WEBP",
+    logo: "/brands/5.svg",
     alt: "Brand 5"
   },
   {
     id: 6,
-    logo: "/brands/brand6.WEBP",
+    logo: "/brands/6.svg",
     alt: "Brand 6"
+  },
+  {
+    id: 7,
+    logo: "/brands/7.svg",
+    alt: "Brand 7"
+  },
+  {
+    id: 8 ,
+    logo: "/brands/8.svg",
+    alt: "Brand 8"
   }
 ]
 

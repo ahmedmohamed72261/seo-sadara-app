@@ -38,7 +38,7 @@ export function HeroSection() {
                 <GradientText variant="primary" animated className="block">
                   تصدر نتائج البحث
                 </GradientText>
-                <span className="block mt-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
+                <span className="block leading-[1.4] bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-transparent">
                   مع خبراء SEO المحترفين
                 </span>
               </h1>

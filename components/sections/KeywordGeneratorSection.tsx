@@ -78,7 +78,7 @@ export function KeywordGeneratorSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h3 className="text-2xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h3 className="text-2xl md:text-4xl md:leading-[1.4]  font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             🔍 استهدف جمهورك بدقة وتصدر نتائج محركات البحث  
           </h3>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">

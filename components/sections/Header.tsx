@@ -11,16 +11,16 @@ const navigationItems = [
   { href: "#features", label: "خدماتنا" },
   { href: "#results", label: "النتائج" },
   { href: "#portfolio", label: "أعمالنا" },
-  { href: "/blog", label: "المدونة" },
-  { href: "#pricing", label: "الأسعار" }
+  { href: "#blog", label: "المدونة" },
+  { href: "#contact", label: "تواصل معنا" }
 ]
 
 const mobileNavigationItems = [
-  { href: "/#features", label: "خدماتنا", icon: "🎯" },
-  { href: "/#results", label: "النتائج", icon: "📈" },
-  { href: "/#portfolio", label: "أعمالنا", icon: "💼" },
-  { href: "/blog", label: "المدونة", icon: "📝" },
-  { href: "/#pricing", label: "الأسعار", icon: "💰" }
+  { href: "#features", label: "خدماتنا", icon: "🎯" },
+  { href: "#results", label: "النتائج", icon: "📈" },
+  { href: "#portfolio", label: "أعمالنا", icon: "💼" },
+  { href: "#blog", label: "المدونة", icon: "📝" },
+  { href: "#contact", label: "تواصل معنا", icon: "📞" }
 ]
 
 export function Header() {

@@ -121,9 +121,9 @@ export function SEOWorksSection() {
               <Award className="w-4 h-4 mr-2" />
               أعمالنا ونتائجنا
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
+            <h2 className="text-4xl md:text-4xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
               <GradientText variant="primary">مشاريع SEO ناجحة</GradientText>{" "}
-              <span className="block mt-3 md:mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">نتائج حقيقية لعملاء حقيقيين</span>
+              <span className="block md:leading-[1.4]  mt-3 md:mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">نتائج حقيقية لعملاء حقيقيين</span>
             </h2>
             <p className="max-w-4xl text-lg md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
               اكتشف كيف ساعدنا عملاءنا في تحقيق نمو استثنائي في الزيارات والمبيعات من خلال استراتيجيات SEO مدروسة ومخصصة.

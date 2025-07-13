@@ -46,7 +46,7 @@ export function ResultsSection() {
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
               <GradientText variant="success">نمو حقيقي</GradientText>{" "}
-              <span className="block mt-3 md:mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">يمكنك رؤيته</span>
+              <span className="block mt-3 md:leading-[1.4] md:mt-4 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">يمكنك رؤيته</span>
             </h2>
             <p className="max-w-4xl text-lg  md:text-xl lg:text-2xl text-gray-600 mx-auto leading-relaxed">
               نحن نؤمن بالشفافية. شاهد بنفسك كيف نحول الاستثمار في الـ SEO إلى زيادة في الظهور والنقرات.
@@ -81,7 +81,7 @@ export function ResultsSection() {
                   <CardTitle className="text-center">
                     <div className="flex flex-col items-center gap-4 md:gap-6">
                       <Award className="h-12 w-12 md:h-16 md:w-16 text-blue-600 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight bg-gradient-to-r from-blue-600 via-green-600 to-purple-600 bg-clip-text text-transparent">
+                      <h3 className="text-2xl md:text-3xl leading-[1.6] lg:text-4xl xl:text-4xl font-bold bg-gradient-to-r from-blue-600 via-green-600 to-purple-600 bg-clip-text text-transparent">
                         مبيعات المتاجر من خلال تحسين محركات البحث
                       </h3>
                       <div className="w-32 h-1.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></div>

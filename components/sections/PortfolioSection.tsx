@@ -7,10 +7,9 @@ import { InteractiveCard } from "@/components/ui/interactive-card"
 import { GradientText } from "@/components/ui/gradient-text"
 import { Users } from "lucide-react"
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
 
 const portfolioItems = [
   {
@@ -77,7 +76,7 @@ export function PortfolioSection() {
 
         <div className="relative">
           <Swiper
-            modules={[Pagination, Autoplay, EffectCoverflow]}
+            modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
             pagination={{ 
@@ -91,45 +90,31 @@ export function PortfolioSection() {
               pauseOnMouseEnter: false,
             }}
             loop={true}
-            speed={1200}
-            effect="coverflow"
-            coverflowEffect={{
-              rotate: 15,
-              stretch: 0,
-              depth: 200,
-              modifier: 1,
-              slideShadows: true,
-            }}
+            speed={1000}
             allowTouchMove={true}
-            centeredSlides={true}
             breakpoints={{
               320: {
                 slidesPerView: 1,
                 spaceBetween: 20,
-                effect: "slide",
               },
               640: {
                 slidesPerView: 1.5,
                 spaceBetween: 25,
-                effect: "coverflow",
               },
               768: {
                 slidesPerView: 2,
                 spaceBetween: 30,
-                effect: "coverflow",
               },
               1024: {
                 slidesPerView: 2.5,
                 spaceBetween: 35,
-                effect: "coverflow",
               },
               1280: {
                 slidesPerView: 3,
                 spaceBetween: 40,
-                effect: "coverflow",
               },
             }}
-            className="portfolio-swiper !pb-16 !overflow-visible"
+            className="portfolio-swiper !pb-16"
           >
             {portfolioItems.map((item, index) => (
               <SwiperSlide key={index} className="!h-auto">
@@ -186,46 +171,25 @@ export function PortfolioSection() {
 
       <style jsx global>{`
         .portfolio-swiper .swiper-pagination-bullet {
-          width: 14px;
-          height: 14px;
+          width: 12px;
+          height: 12px;
           background: rgba(0, 0, 0, 0.3);
           opacity: 1;
-          transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          border: 2px solid rgba(255, 255, 255, 0.5);
+          transition: all 0.3s ease;
         }
         
         .portfolio-swiper .swiper-pagination-bullet-active {
           background: linear-gradient(45deg, #f59e0b, #ec4899);
-          transform: scale(1.3);
-          border-color: rgba(255, 255, 255, 0.8);
-          box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+          transform: scale(1.2);
         }
         
         .portfolio-swiper .swiper-slide {
           height: auto;
-          transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .portfolio-swiper .swiper-slide-active {
-          transform: scale(1.05);
-        }
-        
-        .portfolio-swiper .swiper-slide:not(.swiper-slide-active) {
-          opacity: 0.8;
-          transform: scale(0.95);
+          transition: all 0.5s ease;
         }
         
         .portfolio-swiper .swiper-slide > div {
           height: 100%;
-        }
-
-        .portfolio-swiper .swiper-slide-shadow-left,
-        .portfolio-swiper .swiper-slide-shadow-right {
-          background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
-        }
-
-        .portfolio-swiper .swiper-wrapper {
-          transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* Enhanced shadow for professional look */

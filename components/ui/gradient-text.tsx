@@ -25,11 +25,16 @@ export const GradientText = forwardRef<HTMLSpanElement, GradientTextProps>(
       <span
         ref={ref}
         className={cn(
-          'bg-clip-text text-transparent font-bold',
+          'bg-clip-text text-transparent font-bold leading-tight',
           gradientVariants[variant],
           animated && 'animate-gradient bg-[length:200%_200%]',
           className
         )}
+        style={{
+          lineHeight: '1.2',
+          display: 'inline-block',
+          paddingBottom: '0.1em'
+        }}
         {...props}
       >
         {children}
